@@ -1,0 +1,2 @@
+module AbstractOrdersHelper
+end

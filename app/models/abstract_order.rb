@@ -1,0 +1,2 @@
+class AbstractOrder < ApplicationRecord
+end
