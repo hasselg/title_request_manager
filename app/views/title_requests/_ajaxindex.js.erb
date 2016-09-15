@@ -1,0 +1,20 @@
+$(document).on('turbolinks:load',
+  function() {
+    var table = $('#requests').DataTable( {
+      ajax: {
+        url: "<%= ajax_path %>",
+        dataSrc: ''
+      },
+      columns: [
+        { data: "id",
+          render: function(data, type, full, meta) {
+                    return '<a href="<%= title_requests_path %>/' + data + '">View Full Details</a>';
+                  }  },
+        { data: "last_name"},
+        { data: "first_name"}, 
+        { data: "town"}
+      ],
+    } );
+  });
+
+
