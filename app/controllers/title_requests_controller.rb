@@ -1,7 +1,6 @@
 class TitleRequestsController < ApplicationController
 
   def index
-    @titlerequests = TitleRequest.paginate(page: params[:page])
   end
 
   def ajaxindex
