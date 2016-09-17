@@ -1,20 +1,27 @@
 $(document).on('turbolinks:load',
   function() {
-    var table = $('#requests').DataTable( {
-      ajax: {
-        url: "<%= ajax_path %>",
-        dataSrc: ''
-      },
-      columns: [
-        { data: "id",
-          render: function(data, type, full, meta) {
-                    return '<a href="<%= title_requests_path %>/' + data + '">View Full Details</a>';
-                  }  },
-        { data: "last_name"},
-        { data: "first_name"}, 
-        { data: "town"}
-      ],
-    } );
-  });
+
+    // We have to make sure we don't keep loading the DataTables suite every time we go forward and the backwards in history
+    if( $("#requests_wrapper").length == 0) {
+      var table = $('#requests');
+      table.DataTable( {
+        ajax: {
+          url: "<%= ajax_path %>",
+          dataSrc: ''
+        },
+        columns: [
+          { data: "id",
+            render: function(data, type, full, meta) {
+                      return '<a href="<%= title_requests_path %>/' + data + '">View Full Details</a>';
+                    }  },
+          { data: "last_name"},
+          { data: "first_name"}, 
+          { data: "town"}
+        ],
+      } );
+    }
+  }
+);
+
 
 
