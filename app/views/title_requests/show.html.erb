@@ -1,3 +1,11 @@
+<% content_for :js do %>
+  <script type="text/javascript">
+    <%= render 'file_details.js' %>
+  </script>
+<% end %>
+
+<% @url_action = title_request_path @titlerequest %>
+
 <h1>Request for: <%= @titlerequest.LAST_NAME %>, <%= @titlerequest.FIRST_NAME %></h1>
 
 <%= render 'file_details' %>

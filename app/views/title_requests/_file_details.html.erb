@@ -6,10 +6,13 @@
     <div class="panel-body">
       <table>
         <tr>
-          <td><strong>Order Recorded:</strong></td><td><%= @titlerequest.ORDER_RECD %></td>
+<% if false %>
+          <td><strong>Order Recorded:</strong></td><td><%= best_in_place @titlerequest, :ORDER_RECD, :url => title_request_path, :as => :date %></td>
+<% end %>
+          <td><strong>Order Recorded:</strong></td><td><%= best_in_place @titlerequest, :ORDER_RECD, :url => @url_action, :as => :date %></td>
         </tr>
         <tr>
-          <td><strong>Order Recevied by:</strong></td><td><%= @titlerequest.OR_RECD_BY %></td>
+          <td><strong>Order Recevied by:</strong></td><td><%= best_in_place @titlerequest, :OR_RECD_BY, :url => title_request_path %></td>
         </tr>
         <tr>
           <td><strong>File Opened:</strong></td><td><%= @titlerequest.FILEOPENED %></td>

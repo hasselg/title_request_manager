@@ -1,10 +1,13 @@
+<% content_for :js do %>
+  <script type="text/javascript">
+    <%= render 'ajaxindex.js' %>
+  </script>
+<% end %>
+
 <head>
 <%= stylesheet_link_tag "datatables" %>
-
-<script>
-  <%= render partial: 'ajaxindex.js' %>
-</script>
 </head>
+
 <table id="requests" cellspacing="0" width="100%">
   <thead>
     <tr>
