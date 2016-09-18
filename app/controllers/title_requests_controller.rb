@@ -42,6 +42,10 @@ class TitleRequestsController < ApplicationController
     end
   end
 
+  def generate_open_report
+    render :xlsx => "open", :filename => "sale_pending_title_requests.xlsx"
+  end
+
   private
     def title_request_params
       Rails.logger.debug params.inspect

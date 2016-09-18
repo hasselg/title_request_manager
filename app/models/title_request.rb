@@ -8,4 +8,9 @@ class TitleRequest < ApplicationRecord
       :town => self.TOWN
     }
   end
+
+  scope :file_not_closed, -> {
+    where("FILE_CLOSE IS NULL")
+  }
+
 end
