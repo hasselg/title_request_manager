@@ -13,4 +13,16 @@ class TitleRequest < ApplicationRecord
     where("FILE_CLOSE IS NULL")
   }
 
+  def get_open_summary
+    {
+      "BANK" => self.BANK,
+      "FILE_NO" => self.FILE_NO,
+      "LAST_NAME" => self.LAST_NAME,
+      "COUNTY" => self.COUNTY,
+      "CLOSE_DATE" => self.CLOSE_DATE,
+      "PAYMNT_RCD" => self.REC_PAY_FN,
+      "POLICY_ISS" => self.POLICY_ISS,
+      "OR_RECD_BY" => self.OR_RECD_BY
+    }
+  end
 end
