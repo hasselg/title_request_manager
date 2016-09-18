@@ -1,9 +1,7 @@
-$(document).on('turbolinks:load',
-  function() {
-    $.datepicker.setDefaults({
-      dateFormat: 'yy-mm-dd'
-    });
-    jQuery(".best_in_place").best_in_place();
-  }
-);
+$(document).ready(function() {
+  $.datepicker.setDefaults({
+    dateFormat: 'yy-mm-dd'
+  });
+  jQuery(".best_in_place").best_in_place();
+});
 
