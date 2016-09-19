@@ -1,2 +1,33 @@
 wb = xlsx_package.workbook
-sheet = wb.add_worksheet(name: "Open Title Requests")
+wb.styles do |s|
+  bottom_row_border = s.add_style :border => { :style => :dashed, :color => '00000000', :edges => [:bottom] }
+  header_row_border = s.add_style :border => { :style => :thick, :color => '00000000', :edges => [:bottom] }
+
+  setup = {:orientation => :landscape, :paper_size => 5}
+  current_time = Time.current.to_formatted_s(:long)
+  header_footer = {:different_first => false, :odd_header => "&LOPEN FILES - #{current_time} &CBRV AGENCY, INC.&RPage &P of &N"}
+  margins = {:left => 0.7, :right => 0.7, :bottom => 0.75, :top => 0.75, :header => 0.3, :footer => 0.3 } 
+
+  wb.add_worksheet(name: "Open Title Requests", :page_setup => setup, 
+    :header_footer => header_footer, :page_margins => margins) do |sheet|
+
+    sheet.add_row ["BANK", "FILE_NO", "LAST_NAME", "COUNTY", "CLOSE_DATE", "PAYMNT_RCD", "POLICY_ISS", 
+      "OR_RECD_BY"], :style => header_row_border
+
+    @titlerequests.each do |req|
+      main_contents = [req[:BANK], req[:FILE_NO], req[:LAST_NAME], req[:COUNTY], 
+        req[:CLOSE_DATE].to_s, req[:PAYMNT_RCD].to_s, req[:POLICY_ISS].to_s, req[:OR_RECD_BY]]
+
+      if req[:MEMO].blank?
+        sheet.add_row main_contents, :style => bottom_row_border
+      else
+        memo_line = [""] * 8
+        memo_line[0] = req[:MEMO]
+
+        sheet.add_row main_contents
+        sheet.add_row memo_line, :style => bottom_row_border   
+      end
+
+    end
+  end
+end

@@ -10,7 +10,7 @@ class TitleRequest < ApplicationRecord
   end
 
   scope :file_not_closed, -> {
-    where("FILE_CLOSE IS NULL")
+    where("FILE_CLOSE IS NULL OR FILE_CLOSE = \"\"")
   }
 
   def get_open_summary

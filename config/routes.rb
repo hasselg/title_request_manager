@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :title_requests
-  get '/reporting/open', to: 'title_requests#generate_open_report'
+  match '/reporting/open', to: 'title_requests#generate_open_report', via: [:get, :post]
+  post '/reporting/remittance', to: 'title_requests#generate_remittance_report'
+  get '/reporting/', to: 'title_requests#generate_report'
   get '/ajax', to: 'title_requests#ajaxindex'
   root 'title_requests#index'
   
