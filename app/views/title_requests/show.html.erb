@@ -6,7 +6,7 @@
 
 <% @url_action = title_request_path @titlerequest %>
 
-<h1>Request for: <%= @titlerequest.LAST_NAME %>, <%= @titlerequest.FIRST_NAME %></h1>
+<h1>Request for: <%= best_in_place @titlerequest, :LAST_NAME %>, <%= best_in_place @titlerequest, :FIRST_NAME %></h1>
 
 <%= render 'file_details' %>
 <%= render 'address' %>

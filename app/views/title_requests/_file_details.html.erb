@@ -4,24 +4,27 @@
        <h3 class="panel-title">Request Details</h3>
     </div>
     <div class="panel-body">
-      <table>
+      <table class="table">
         <tr>
-<% if false %>
-          <td><strong>Order Recorded:</strong></td><td><%= best_in_place @titlerequest, :ORDER_RECD, :url => title_request_path, :as => :date %></td>
-<% end %>
-          <td><strong>Order Recorded:</strong></td><td><%= best_in_place @titlerequest, :ORDER_RECD, :url => @url_action, :as => :date %></td>
+          <td><strong>Order Recorded:</strong></td><td><%= best_in_place @titlerequest, :ORDER_RECD, :as => :date %></td>
         </tr>
         <tr>
-          <td><strong>Order Recevied by:</strong></td><td><%= best_in_place @titlerequest, :OR_RECD_BY, :url => title_request_path %></td>
+          <td><strong>Order Recevied by:</strong></td><td><%= best_in_place @titlerequest, :OR_RECD_BY %></td>
         </tr>
         <tr>
-          <td><strong>File Opened:</strong></td><td><%= @titlerequest.FILEOPENED %></td>
+          <td><strong>File Number:</strong></td><td><%= best_in_place @titlerequest, :FILE_NO %></td>
         </tr>
         <tr>
-          <td><strong>File Number:</strong></td><td><%= @titlerequest.FILE_NO %></td>
+          <td><strong>File Opened:</strong></td><td><%= best_in_place @titlerequest, :FILEOPENED, :as => :date %></td>
         </tr>
         <tr>
-          <td><strong>File Closed:</strong></td><td><%= @titlerequest.FILE_CLOSE %></td>
+          <td><strong>File Closed:</strong></td><td><%= best_in_place @titlerequest, :FILE_CLOSE, :as => :date %></td>
+        </tr>
+        <tr>
+          <td><strong>Bank:</strong></td><td><%= best_in_place @titlerequest, :BANK %></td>
+        </tr>
+        <tr>
+          <td><strong>Memo:</strong></td><td><%= best_in_place @titlerequest, :MEMO, :as => :textarea %></td>
         </tr>
       </table>
     </div>
