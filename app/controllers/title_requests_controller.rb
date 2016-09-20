@@ -42,6 +42,30 @@ class TitleRequestsController < ApplicationController
     end
   end
 
+  def generate_report
+  end
+
+  def generate_open_report
+    if request.post?
+      @beginning_date = Date.parse(params[:beginning_date])
+      @ending_date = Date.parse(params[:ending_date])
+
+      @titlerequests = TitleRequest.where("FILEOPENED >= ? AND FILEOPENED < ?", @beginning_date, @ending_date)
+      render :xlsx => "open", :filename => "open_title_requests.xlsx"
+
+    else
+      @titlerequests = TitleRequest.file_not_closed
+      render :xlsx => "open", :filename => "all_open_title_requests.xlsx"
+    end
+  end
+
+  def generate_remittance_report
+    @beginning_date = Date.parse(params[:beginning_date])
+    @ending_date = Date.parse(params[:ending_date])
+
+    logger.debug("Beginning: #{@beginning_date}, Ending: #{@ending_date}")
+  end
+
   private
     def title_request_params
       Rails.logger.debug params.inspect

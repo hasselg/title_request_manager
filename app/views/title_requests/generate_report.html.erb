@@ -1,0 +1,48 @@
+<% content_for :js do %>
+  <script type="text/javascript">
+    <%= render 'reporting.js' %>
+  </script>
+<% end %>
+
+<h1>Generate a new report</h1>
+
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-heading">Open Files</div>
+    <div class="panel-body">
+      <%= link_to "Generate report of all currently open files", reporting_open_path(format: :xlsx) %>
+
+      <%= form_tag reporting_open_path(format: :xlsx), class: 'form-inline' do %>
+        <div class="form-group">
+          <%= label_tag 'Beginning Date' %>
+          <%= date_field_tag :beginning_date, nil, class: 'datepicker' %>
+  
+          <%= label_tag 'Ending Date' %>
+          <%= date_field_tag :ending_date, nil, class: 'datepicker' %>
+  
+          <%= submit_tag 'Generate report', class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-heading">Remittance Report</div>
+    <div class="panel-body">
+      <%= form_tag reporting_remittance_path, class: 'form-inline' do %>
+        <div class="form-group">
+          <%= label_tag 'Beginning Date' %>
+          <%= date_field_tag :beginning_date, nil, class: 'datepicker' %>
+  
+          <%= label_tag 'Ending Date' %>
+          <%= date_field_tag :ending_date, nil, class: 'datepicker' %>
+  
+          <%= submit_tag 'Generate report', class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
