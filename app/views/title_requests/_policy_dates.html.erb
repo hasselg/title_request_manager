@@ -1,0 +1,20 @@
+<div class="col-md-4">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Policy Dates</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table">
+        <tr>
+          <td><strong>Policy Out:</strong></td><td><%= best_in_place @titlerequest, :POLICY_OUT, :as => :date %></td>
+        </tr>
+        <tr>
+          <td><strong>Policy Back:</strong></td><td><%= best_in_place @titlerequest, :POLICY_BCK, :as => :date %></td>
+        </tr>
+        <tr>
+          <td><strong>Policy ISS:</strong></td><td><%= best_in_place @titlerequest, :POLICY_ISS, :as => :date %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
