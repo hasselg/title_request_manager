@@ -9,6 +9,9 @@
           <td><strong>Seller:</strong></td><td><%= best_in_place @titlerequest, :SELLER %></td>
         </tr>
         <tr>
+          <td><strong>CLOSE_DATE:</strong></td><td><%= best_in_place @titlerequest, :CLOSE_DATE, :as => :date %></td>
+        </tr>
+        <tr>
           <td><strong>Address:</strong></td><td><%= best_in_place @titlerequest, :ADDRESS %></td>
         </tr>
         <tr>
