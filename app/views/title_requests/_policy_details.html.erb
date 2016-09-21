@@ -6,22 +6,28 @@
     <div class="panel-body">
       <table class="table">
         <tr>
-          <td><strong>MTG_AMOUNT:</strong></td><td><%= best_in_place @titlerequest, :MTG_AMOUNT %></td>
+          <td><strong>MTG_AMOUNT:</strong></td><td><%= best_in_place @titlerequest, :MTG_AMOUNT,
+            :display_with => :number_to_currency %></td>
         </tr>
         <tr>
-          <td><strong>MTG_PREM:</strong></td><td><%= best_in_place @titlerequest, :MTG_PREM %></td>
+          <td><strong>MTG_PREM:</strong></td><td><%= best_in_place @titlerequest, :MTG_PREM,
+            :display_with => :number_to_currency %></td>
         </tr>
         <tr>
-          <td><strong>FN_PREM_M:</strong></td><td><%= best_in_place @titlerequest, :FN_PREM_M %></td>
+          <td><strong>FN_PREM_M:</strong></td><td><%= best_in_place @titlerequest, :FN_PREM_M,
+            :display_with => :number_to_currency %></td>
         </tr>
         <tr>
-          <td><strong>FN_PREM_M2:</strong></td><td><%= best_in_place @titlerequest, :FN_PREM_M2 %></td>
+          <td><strong>FN_PREM_M2:</strong></td><td><%= best_in_place @titlerequest, :FN_PREM_M2,
+            :display_with => :number_to_currency %></td>
         </tr>
         <tr>
-          <td><strong>W_PREM_M3:</strong></td><td><%= best_in_place @titlerequest, :W_PREM_M3 %></td>
+          <td><strong>W_PREM_M3:</strong></td><td><%= best_in_place @titlerequest, :W_PREM_M3,
+            :display_with => :number_to_currency %></td>
         </tr>
         <tr>
-          <td><strong>MTG_PREM_T:</strong></td><td><%= best_in_place @titlerequest, :MTG_PREM_T %></td>
+          <td><strong>MTG_PREM_T:</strong></td><td><%= best_in_place @titlerequest, :MTG_PREM_T,
+            :display_with => :number_to_currency %></td>
         </tr>
         <tr>
           <td><strong>MTG_POLICY:</strong></td><td><%= best_in_place @titlerequest, :MTG_POLICY %></td>
@@ -33,10 +39,80 @@
           <td><strong>CONV_POLIC:</strong></td><td><%= best_in_place @titlerequest, :CONV_POLIC %></td>
         </tr>
         <tr>
-          <td><strong>FEE_AMOUNT:</strong></td><td><%= best_in_place @titlerequest, :FEE_AMOUNT, :display_with => :number_to_currency %></td>
+          <td><strong>FEE_AMOUNT:</strong></td><td><%= best_in_place @titlerequest, :FEE_AMOUNT,
+            :display_with => :number_to_currency %></td>
         </tr>
         <tr>
-          <td><strong>FEE_PREM:</strong></td><td><%= best_in_place @titlerequest, :FEE_PREM, :display_with => :number_to_currency %></td>
+          <td><strong>FEE_PREM:</strong></td><td><%= best_in_place @titlerequest, :FEE_PREM, 
+            :display_with => :number_to_currency %></td>
+        </tr>
+        <tr>
+          <td><strong>FN_PREM_O:</strong></td><td><%= best_in_place @titlerequest, :FN_PREM_O,
+            :display_with => :number_to_currency %></td>
+        </tr>
+        <tr>
+          <td><strong>FN_PREM_O2:</strong></td><td><%= best_in_place @titlerequest, :FN_PREM_O2,
+            :display_with => :number_to_currency %></td>
+        </tr>
+        <tr>
+          <td><strong>W_PREM_O3:</strong></td><td><%= best_in_place @titlerequest, :W_PREM_O3,
+            :display_with => :number_to_currency %></td>
+        </tr>
+        <tr>
+          <td><strong>FEE_PREM_T:</strong></td><td><%= best_in_place @titlerequest, :FEE_PREM_T,
+            :display_with => :number_to_currency %></td>
+        </tr>
+        <tr>
+          <td><strong>FEE_POLICY:</strong></td><td><%= best_in_place @titlerequest, :FEE_POLICY %></td>
+        </tr>
+        <tr>
+          <td><strong>M_POL_CODE:</strong></td><td><%= best_in_place @titlerequest, :M_POL_CODE %></td>
+        </tr>
+        <tr>
+          <td><strong>O_POL_CODE:</strong></td><td><%= best_in_place @titlerequest, :O_POL_CODE %></td>
+        </tr>
+        <tr>
+          <td><strong>B_PREM_MTG:</strong></td><td><%= best_in_place @titlerequest, :B_PREM_MTG %></td>
+        </tr>
+        <tr>
+          <td><strong>B_PREM_FEE:</strong></td><td><%= best_in_place @titlerequest, :B_PREM_FEE, 
+            :display_with => :number_to_currency %></td>
+        </tr>
+        <tr>
+          <td><strong>STAND_CODE:</strong></td><td><%= best_in_place @titlerequest, :STAND_CODE %></td>
+        </tr>
+        <tr>
+          <td><strong>STAND_AMNT:</strong></td><td><%= best_in_place @titlerequest, :STAND_AMNT,
+            :display_with => :number_to_currency %></td>
+        </tr>
+        <tr>
+          <td><strong>RISK_CODE:</strong></td><td><%= best_in_place @titlerequest, :RISK_CODE %></td>
+        </tr>
+        <tr>
+          <td><strong>RISK_AMNT:</strong></td><td><%= best_in_place @titlerequest, :RISK_AMNT,
+            :display_with => :number_to_currency %></td>
+        </tr>
+        <tr>
+          <td><strong>FNTI_AMNT:</strong></td><td><%= best_in_place @titlerequest, :FNTI_AMNT,
+            :display_with => :number_to_currency %></td>
+        </tr>
+        <tr>
+          <td><strong>FNTI_NEW:</strong></td><td><%= best_in_place @titlerequest, :FNTI_NEW %></td>
+        </tr>
+        <tr>
+          <td><strong>FNTI_4_11:</strong></td><td><%= best_in_place @titlerequest, :FNTI_4_11 %></td>
+        </tr>
+        <tr>
+          <td><strong>TTIC_AMNT:</strong></td><td><%= best_in_place @titlerequest, :TTIC_AMNT,
+            :display_with => :number_to_currency %></td>
+        </tr>
+        <tr>
+          <td><strong>WLTIC_AMNT:</strong></td><td><%= best_in_place @titlerequest, :WLTIC_AMNT,
+            :display_with => :number_to_currency %></td>
+        </tr>
+        <tr>
+          <td><strong>PRIOR_AMNT:</strong></td><td><%= best_in_place @titlerequest, :PRIOR_AMNT,
+            :display_with => :number_to_currency %></td>
         </tr>
       </table>
     </div>
