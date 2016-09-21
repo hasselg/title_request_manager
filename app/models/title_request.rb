@@ -5,6 +5,7 @@ class TitleRequest < ApplicationRecord
       :id => self.id,
       :last_name => self.LAST_NAME,
       :first_name => self.FIRST_NAME,
+      :file_opened => self.FILEOPENED,
       :town => self.TOWN
     }
   end
