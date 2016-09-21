@@ -1,0 +1,44 @@
+<div class="col-md-8">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Policy Details</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table">
+        <tr>
+          <td><strong>MTG_AMOUNT:</strong></td><td><%= best_in_place @titlerequest, :MTG_AMOUNT %></td>
+        </tr>
+        <tr>
+          <td><strong>MTG_PREM:</strong></td><td><%= best_in_place @titlerequest, :MTG_PREM %></td>
+        </tr>
+        <tr>
+          <td><strong>FN_PREM_M:</strong></td><td><%= best_in_place @titlerequest, :FN_PREM_M %></td>
+        </tr>
+        <tr>
+          <td><strong>FN_PREM_M2:</strong></td><td><%= best_in_place @titlerequest, :FN_PREM_M2 %></td>
+        </tr>
+        <tr>
+          <td><strong>W_PREM_M3:</strong></td><td><%= best_in_place @titlerequest, :W_PREM_M3 %></td>
+        </tr>
+        <tr>
+          <td><strong>MTG_PREM_T:</strong></td><td><%= best_in_place @titlerequest, :MTG_PREM_T %></td>
+        </tr>
+        <tr>
+          <td><strong>MTG_POLICY:</strong></td><td><%= best_in_place @titlerequest, :MTG_POLICY %></td>
+        </tr>
+        <tr>
+          <td><strong>SIMULT_MTG:</strong></td><td><%= best_in_place @titlerequest, :SIMULT_MTG %></td>
+        </tr>
+        <tr>
+          <td><strong>CONV_POLIC:</strong></td><td><%= best_in_place @titlerequest, :CONV_POLIC %></td>
+        </tr>
+        <tr>
+          <td><strong>FEE_AMOUNT:</strong></td><td><%= best_in_place @titlerequest, :FEE_AMOUNT, :display_with => :number_to_currency %></td>
+        </tr>
+        <tr>
+          <td><strong>FEE_PREM:</strong></td><td><%= best_in_place @titlerequest, :FEE_PREM, :display_with => :number_to_currency %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
