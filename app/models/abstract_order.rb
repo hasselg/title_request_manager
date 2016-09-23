@@ -1,2 +1,0 @@
-class AbstractOrder < ApplicationRecord
-end

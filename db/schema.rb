@@ -12,41 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20160912231253) do
 
-  create_table "Abstract_Orders", primary_key: "ID", force: :cascade do |t|
-    t.text     "ORDERED_BY"
-    t.date     "DATE_RECD"
-    t.text     "LAST_NAME"
-    t.text     "FIRST_NAME"
-    t.text     "ADDRESS"
-    t.text     "TOWN"
-    t.text     "PARCEL_NO"
-    t.text     "COUNTY"
-    t.decimal  "INV_NO"
-    t.text     "ABSTR_NO"
-    t.text     "SAME_NO"
-    t.text     "NEW_NO"
-    t.text     "JOB_TYPE"
-    t.text     "MISC_REF_"
-    t.date     "DATE_TO_SI"
-    t.text     "ABSTRACTOR"
-    t.date     "DATE_DELIV"
-    t.text     "METHOD"
-    t.datetime "created_at", default: '2016-09-11 00:00:00', null: false
-    t.datetime "updated_at", default: '2016-09-11 00:00:00', null: false
-  end
-
-  create_table "Abstracts", primary_key: "ID", force: :cascade do |t|
-    t.text     "TOWN_OF"
-    t.text     "VILLAGE"
-    t.text     "ADDRESS"
-    t.text     "PARCEL_NO"
-    t.decimal  "ABSTRT_NO"
-    t.text     "NAME"
-    t.datetime "created_at", default: '2016-09-11 00:00:00', null: false
-    t.datetime "updated_at", default: '2016-09-11 00:00:00', null: false
-  end
-
-  create_table "Title_Requests", primary_key: "ID", force: :cascade do |t|
+  create_table "Title_Requests", force: :cascade do |t|
     t.text     "LAST_NAME"
     t.text     "FIRST_NAME"
     t.text     "SELLER"
