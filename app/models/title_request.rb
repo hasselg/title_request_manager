@@ -1,4 +1,6 @@
 class TitleRequest < ApplicationRecord
+  validates_presence_of :LAST_NAME
+  validates :FILEOPENED, :CLOSE_DATE, in_future: {future: false} 
 
   def as_json(options = {})
     {
@@ -25,5 +27,11 @@ class TitleRequest < ApplicationRecord
       "POLICY_ISS" => self.POLICY_ISS,
       "OR_RECD_BY" => self.OR_RECD_BY
     }
+  end
+
+  def validate_date_not_in_future(model, attr, value)
+    if attr.present? && value > Date.today
+      errors.add(attr, "can't be in the future")
+    end
   end
 end
