@@ -1,6 +1,12 @@
 class TitleRequest < ApplicationRecord
   validates_presence_of :LAST_NAME
-  validates :FILEOPENED, :CLOSE_DATE, in_future: {future: false} 
+  validates :ORDER_RECD, :FILEOPENED, :TIT_REVIEW, 
+            :COMMIT_OUT, :COMMIT_BCK, :COMMIT_ISS, 
+            :CLOSE_DATE, :MARKUP_RCD, :REC_PAY_FN,
+            :REC_PAY_W, :REC_PAY_TT, :REC_DOC_RD,
+            :REDATE_ABS, :POLICY_OUT, :POLICY_BCK,
+            :POLICY_ISS,
+        in_future: {future: false} 
 
   def as_json(options = {})
     {
