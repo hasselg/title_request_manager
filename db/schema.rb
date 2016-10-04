@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160912231253) do
+ActiveRecord::Schema.define(version: 20161003235727) do
 
   create_table "Title_Requests", force: :cascade do |t|
     t.text     "LAST_NAME"
@@ -35,10 +35,10 @@ ActiveRecord::Schema.define(version: 20160912231253) do
     t.date     "CLOSE_DATE"
     t.date     "MARKUP_RCD"
     t.date     "REC_PAY_FN"
-    t.text     "REC_PAY_W"
-    t.text     "REC_PAY_TT"
+    t.date     "REC_PAY_W"
+    t.date     "REC_PAY_TT"
     t.date     "REC_DOC_RD"
-    t.text     "REDATE_ABS"
+    t.date     "REDATE_ABS"
     t.date     "POLICY_OUT"
     t.date     "POLICY_BCK"
     t.date     "POLICY_ISS"
