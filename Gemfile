@@ -15,6 +15,8 @@ gem 'jquery-ui-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'best_in_place', '~> 3.1.0'
+gem 'timeliness', '~> 0.3.8'
+gem 'validates_timeliness', '~> 4.0'
 
 # Reporting
 gem 'axlsx'
@@ -23,7 +25,8 @@ gem 'axlsx_rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'rspec-rails', '~> 3.5.2'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-core', '~> 3.5.4'
 end
 
 group :test do
