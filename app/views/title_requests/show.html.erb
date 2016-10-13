@@ -1,19 +1,30 @@
-<% content_for :js do %>
-  <script type="text/javascript">
-    <%= render 'file_details.js' %>
-  </script>
-<% end %>
 
-<% @url_action = title_request_path @titlerequest %>
+<div class="container">
 
-<h1>Request for: <%= best_in_place @titlerequest, :LAST_NAME %>, <%= best_in_place @titlerequest, :FIRST_NAME %></h1>
+  <div class="page-header">
+    <h1>Request for <%= @titlerequest.LAST_NAME %>, <%= @titlerequest.FIRST_NAME %><small> -- <%= link_to "Edit", edit_title_request_url %></small></h1>
+  </div>
+  <%= form_for @titlerequest, :html => {class: 'form-horizontal'}, builder: TidyFormBuilder do |f| %>
+    <fieldset disabled="disabled">
+      <div class="row">
+          <div class="col-md-6">
+            <%= render 'form_file_details', :f => f %>
+          </div>
 
-<div class="row">
-  <%= render 'file_details' %>
-  <%= render 'address' %>
-  <%= render 'policy_dates' %>
+          <div class="col-md-6">
+            <%= render 'form_property_details', :f => f %>
+          </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <%= render 'form_policy_dates', :f => f %>
+        </div>
+
+        <div class="col-md-6">
+          <%= render 'form_policy_details', :f => f %>
+        </div>
+      </div>
+    </fieldset>
+  <% end %>
 </div>
-<div class="row">
-  <%= render 'policy_details' %>
-</div>
-
