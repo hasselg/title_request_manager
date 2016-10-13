@@ -1,0 +1,51 @@
+
+<div class="container">
+
+  <%= form_for @titlerequest, :html => {class: 'form-horizontal'}, builder: TidyFormBuilder do |f| %>
+
+
+    <div class="page-header">
+      <h1>Request for
+        <%= f.text_field :LAST_NAME, value: @titlerequest.LAST_NAME, data: {toggle: "tooltip", placement: "left" }, title: "Last name" %>,
+        <%= f.text_field :FIRST_NAME, value: @titlerequest.FIRST_NAME, data: {toggle: "tooltip", placement: "left" }, title: "First name" %>
+      </h1>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2">
+        <%= f.submit value: "Save Changes", class: 'btn btn-primary' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <%= render 'form_file_details', :f => f %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <%= render 'form_property_details', :f => f %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <%= render 'form_policy_dates', :f => f %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <%= render 'form_policy_details', :f => f %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <%= f.submit value: "Save Changes", class: 'btn btn-primary' %>
+      </div>
+    </div>
+
+  <% end %>
+</div>

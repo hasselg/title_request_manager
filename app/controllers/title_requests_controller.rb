@@ -22,23 +22,25 @@ class TitleRequestsController < ApplicationController
     if @titlerequest.save
       logger.debug("new guy created!")
 
-      redirect_to @titlerequest
+      redirect_to edit_title_request_url(@titlerequest)
     else
       render 'new'
     end
   end
 
+  def edit
+    @titlerequest = TitleRequest.find(params[:id])
+  end
+
   def update
     @titlerequest = TitleRequest.find(params[:id])
- 
-    respond_to do |format| 
-      if @titlerequest.update_attributes(title_request_params)
-        format.html { redirect_to(@titlerequest) }
-        format.json { respond_with_bip(@titlerequest) }
-      else
-        format.html { render :action => "edit" }
-        format.json { respond_with_bip(@titlerequest) }
-      end
+
+    if @titlerequest.update_attributes(title_request_params)
+      flash[:success] = "Title request updated"
+      redirect_to @titlerequest
+    else
+      flash[:danger] = "Update unsuccessful #{@titlerequest.errors.full_messages}"
+      render 'edit'
     end
   end
 
@@ -68,7 +70,8 @@ class TitleRequestsController < ApplicationController
 
   private
     def title_request_params
-      Rails.logger.debug params.inspect
+      Rails.logger.debug("update params received: #{params.inspect}")
+
       params.require(:title_request).permit!
     end
 end

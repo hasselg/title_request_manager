@@ -1,15 +1,18 @@
-<% content_for :js do %>
-  <script type="text/javascript">
-    <%= render 'file_details.js' %>
-  </script>
-<% end %>
 
-<h1>New Title Request</h1>
+<div class="container">
+  <h1>Create a New Title Request</h1>
 
-<%= form_for(@titlerequest, url: {action: "create"}) do |f| %>
-  <%= f.label :LAST_NAME %>
-  <%= f.text_field :LAST_NAME, class: 'form-control' %>
+  <%= form_for @titlerequest, builder: TidyFormBuilder do |f| %>
+    <div class="form-group">
+      <%= f.label :LAST_NAME %>
+      <%= f.text_field :LAST_NAME %>
+    </div>
 
-  <%= f.submit "Create Title Request", class: "btn" %>
-<% end %>
-
+    <div class="form-group">
+      <%= f.label :FIRST_NAME %>
+      <%= f.text_field :FIRST_NAME %>
+    </div>
+  
+    <%= f.submit "Create Title Request", class: "btn btn-primary" %>
+  <% end %>
+</div>

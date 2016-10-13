@@ -1,0 +1,47 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+     <h3 class="panel-title">Request Details</h3>
+  </div>
+  <div class="panel-body">
+
+    <div class="form-group">
+      <%= f.label :ORDER_RECD, "Order Received On" %>
+      <%= f.date_field :ORDER_RECD %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :OR_RECD_BY, "Received From" %>
+      <%= f.text_field :OR_RECD_BY, class: 'col-sm-9' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :REVIEW_BY, "Reviewed By" %>
+      <%= f.text_field :REVIEW_BY, class: 'col-sm-9' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :FILE_NO, "File Number" %>
+      <%= f.text_field :FILE_NO, class: 'col-sm-9' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :FILEOPENED, "File Opened" %>
+      <%= f.date_field :FILEOPENED %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :FILE_CLOSE, "File Closed On" %>
+      <%= f.date_field :FILE_CLOSE %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :BANK %>
+      <%= f.text_field :BANK, class: 'col-sm-9' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :MEMO %>
+      <%= f.text_area :MEMO, class: 'col-sm-9' %>
+    </div>
+  </div>
+</div>
