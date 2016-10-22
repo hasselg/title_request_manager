@@ -10,11 +10,11 @@ $(document).ready(function(){
         render: function(data, type, full, meta) {
                   return '<a href="<%= title_requests_path %>/' + data + '">View Full Details</a>';
                 }  },
+      { data: "file_no"},
       { data: "last_name"},
-      { data: "first_name"}, 
+      { data: "first_name"},
       { data: "file_opened"},
       { data: "town"}
     ],
   } );
 });
-

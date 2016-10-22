@@ -91,6 +91,7 @@ class TitleRequest < ApplicationRecord
   def as_json(options = {})
     {
       :id => self.id,
+      :file_no => self.FILE_NO,
       :last_name => self.LAST_NAME,
       :first_name => self.FIRST_NAME,
       :file_opened => self.FILEOPENED,
