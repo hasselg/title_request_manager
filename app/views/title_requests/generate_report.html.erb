@@ -1,8 +1,4 @@
-<% content_for :js do %>
-  <script type="text/javascript">
-    <%= render 'reporting.js' %>
-  </script>
-<% end %>
+<%= javascript_include_tag params[:controller] %>
 
 <h1>Generate a new report</h1>
 
@@ -12,14 +8,14 @@
     <div class="panel-body">
       <%= link_to "Generate report of all currently open files", reporting_open_path(format: :xlsx) %>
 
-      <%= form_tag reporting_open_path(format: :xlsx), class: 'form-inline' do %>
+      <%= form_tag(reporting_open_path(format: :xlsx), method: "post", id: "open", class: 'form-inline') do %>
         <div class="form-group">
           <%= label_tag 'Beginning Date' %>
-          <%= date_field_tag :beginning_date, nil, class: 'datepicker' %>
-  
+          <%= date_field_tag :beginning_date, nil, id: "beginning_open", class: 'datepicker' %>
+
           <%= label_tag 'Ending Date' %>
-          <%= date_field_tag :ending_date, nil, class: 'datepicker' %>
-  
+          <%= date_field_tag :ending_date, nil, id: "ending_open", class: 'datepicker' %>
+
           <%= submit_tag 'Generate report', class: "btn btn-primary" %>
         </div>
       <% end %>
@@ -31,18 +27,20 @@
   <div class="panel panel-default">
     <div class="panel-heading">Remittance Report</div>
     <div class="panel-body">
-      <%= form_tag reporting_remittance_path, class: 'form-inline' do %>
+      <%= form_tag(reporting_remittance_path(format: :xlsx), id: "remittance", class: 'form-inline') do %>
         <div class="form-group">
+          <%= label_tag 'Underwriter' %>
+          <%= select_tag :underwriter, options_from_collection_for_select(TitleRequest.select(:LT_TT_W_FN).distinct(), :LT_TT_W_FN, :LT_TT_W_FN) %>
+
           <%= label_tag 'Beginning Date' %>
-          <%= date_field_tag :beginning_date, nil, class: 'datepicker' %>
-  
+          <%= date_field_tag :beginning_date, nil, id: "beginning_remit", class: 'datepicker' %>
+
           <%= label_tag 'Ending Date' %>
-          <%= date_field_tag :ending_date, nil, class: 'datepicker' %>
-  
+          <%= date_field_tag :ending_date, nil, id: "ending_remit", class: 'datepicker' %>
+
           <%= submit_tag 'Generate report', class: "btn btn-primary" %>
         </div>
       <% end %>
     </div>
   </div>
 </div>
-

@@ -49,10 +49,10 @@ class TitleRequestsController < ApplicationController
 
   def generate_open_report
     if request.post?
-      @beginning_date = Date.parse(params[:beginning_date])
-      @ending_date = Date.parse(params[:ending_date])
+      @beginning_date = Timeliness.parse(params[:beginning_date])
+      @ending_date = Timeliness.parse(params[:ending_date])
 
-      @titlerequests = TitleRequest.where("FILEOPENED >= ? AND FILEOPENED < ?", @beginning_date, @ending_date)
+      @titlerequests = TitleRequest.where("FILEOPENED >= ? AND FILEOPENED <= ?", @beginning_date, @ending_date)
       render :xlsx => "open", :filename => "open_title_requests.xlsx"
 
     else
@@ -62,10 +62,30 @@ class TitleRequestsController < ApplicationController
   end
 
   def generate_remittance_report
-    @beginning_date = Date.parse(params[:beginning_date])
-    @ending_date = Date.parse(params[:ending_date])
+    @beginning_date = Timeliness.parse(params[:beginning_date])
+    @ending_date = Timeliness.parse(params[:ending_date])
+    @underwriter = params[:underwriter]
 
-    logger.debug("Beginning: #{@beginning_date}, Ending: #{@ending_date}")
+    case @underwriter
+    when "LT"
+      @underwriter_name = "Lawyer's Title Insurance Company"
+      @titlerequests = TitleRequest.where("REC_PAY_FN >= ? AND REC_PAY_FN <= ?",
+        @beginning_date, @ending_date).order(:CLOSE_DATE)
+    when "TT"
+      @underwriter_name = "TICOR Title Insurance Company"
+      @titlerequests = TitleRequest.where("REC_PAY_TT >= ? AND REC_PAY_TT <= ?",
+        @beginning_date, @ending_date).order(:CLOSE_DATE)
+    when "W"
+      @underwriter_name = "Westcor Title Insurance Company"
+      @titlerequests = TitleRequest.where("REC_PAY_W >= ? AND REC_PAY_W <= ?",
+        @beginning_date, @ending_date).order(:CLOSE_DATE)
+    when "FN"
+      @underwriter_name = "Fidelity National Title Insurance Company"
+      @titlerequests = TitleRequest.where("REC_PAY_FN >= ? AND REC_PAY_FN <= ?",
+        @beginning_date, @ending_date).order(:CLOSE_DATE)
+    end
+
+    render xlsx: 'remittance_report', filename: "remitted_requests.xlsx", xlsx_use_shared_strings: true
   end
 
   private
