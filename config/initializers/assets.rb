@@ -12,5 +12,5 @@ Rails.application.config.assets.version = '1.0'
 #Rails.application.config.assets.precompile += %w( datatables.min.css )
 Rails.application.config.assets.precompile += %w( datatables.js )
 Rails.application.config.assets.precompile += %w( datatables.scss.erb )
-
+Rails.application.config.assets.precompile += %w( title_requests.js )
 
