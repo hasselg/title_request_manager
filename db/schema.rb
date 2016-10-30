@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161003235727) do
+ActiveRecord::Schema.define(version: 0) do
 
   create_table "Title_Requests", force: :cascade do |t|
     t.text     "LAST_NAME"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20161003235727) do
     t.text     "TOWN"
     t.date     "ORDER_RECD"
     t.date     "FILEOPENED"
-    t.text     "PATRIOT_DS"
+    t.date     "PATRIOT_DS"
     t.text     "LT_TT_W_FN"
     t.text     "MEMO"
     t.date     "TIT_REVIEW"
@@ -63,20 +63,20 @@ ActiveRecord::Schema.define(version: 20161003235727) do
     t.text     "FEE_POLICY"
     t.text     "M_POL_CODE"
     t.text     "O_POL_CODE"
-    t.text     "B_PREM_MTG"
+    t.decimal  "B_PREM_MTG"
     t.decimal  "B_PREM_FEE"
     t.text     "STAND_CODE"
     t.decimal  "STAND_AMNT"
     t.text     "RISK_CODE"
     t.decimal  "RISK_AMNT"
-    t.text     "FNTI_AMNT"
-    t.text     "FNTI_NEW"
-    t.text     "FNTI_4_11"
+    t.decimal  "FNTI_AMNT"
+    t.decimal  "FNTI_NEW"
+    t.decimal  "FNTI_4_11"
     t.decimal  "TTIC_AMNT"
     t.decimal  "WLTIC_AMNT"
     t.decimal  "PRIOR_AMNT"
-    t.datetime "created_at", default: '2016-09-12 00:00:00', null: false
-    t.datetime "updated_at", default: '2016-09-12 00:00:00', null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
