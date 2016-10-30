@@ -1,1 +1,5 @@
 name_in_header: Foobar Agency, Inc.
+agency:
+  name: FOOBAR AGENCY, INC.
+  number: 00.00.00.00
+  certifying_official: John Doe 
