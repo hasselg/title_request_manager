@@ -1,46 +1,49 @@
 <%= javascript_include_tag params[:controller] %>
 
-<h1>Generate a new report</h1>
+<div class="container">
 
-<div class="row">
-  <div class="panel panel-default">
-    <div class="panel-heading">Open Files</div>
-    <div class="panel-body">
-      <%= link_to "Generate report of all currently open files", reporting_open_path(format: :xlsx) %>
+  <h1>Generate a new report</h1>
 
-      <%= form_tag(reporting_open_path(format: :xlsx), method: "post", id: "open", class: 'form-inline') do %>
-        <div class="form-group">
-          <%= label_tag 'Beginning Date' %>
-          <%= date_field_tag :beginning_date, nil, id: "beginning_open", class: 'datepicker' %>
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">Open Files</div>
+      <div class="panel-body">
+        <%= link_to "Generate report of all currently open files", reporting_open_path(format: :xlsx) %>
 
-          <%= label_tag 'Ending Date' %>
-          <%= date_field_tag :ending_date, nil, id: "ending_open", class: 'datepicker' %>
+        <%= form_tag(reporting_open_path(format: :xlsx), method: "post", id: "open", class: 'form-inline') do %>
+          <div class="form-group">
+            <%= label_tag 'Beginning Date' %>
+            <%= date_field_tag :beginning_date, nil, id: "beginning_open", class: 'datepicker' %>
 
-          <%= submit_tag 'Generate report', class: "btn btn-primary" %>
-        </div>
-      <% end %>
+            <%= label_tag 'Ending Date' %>
+            <%= date_field_tag :ending_date, nil, id: "ending_open", class: 'datepicker' %>
+
+            <%= submit_tag 'Generate report', class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="panel panel-default">
-    <div class="panel-heading">Remittance Report</div>
-    <div class="panel-body">
-      <%= form_tag(reporting_remittance_path(format: :xlsx), id: "remittance", class: 'form-inline') do %>
-        <div class="form-group">
-          <%= label_tag 'Underwriter' %>
-          <%= select_tag :underwriter, options_from_collection_for_select(TitleRequest.select(:LT_TT_W_FN).distinct(), :LT_TT_W_FN, :LT_TT_W_FN) %>
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">Remittance Report</div>
+      <div class="panel-body">
+        <%= form_tag(reporting_remittance_path(format: :xlsx), id: "remittance", class: 'form-inline') do %>
+          <div class="form-group">
+            <%= label_tag 'Underwriter' %>
+            <%= select_tag :underwriter, options_from_collection_for_select(TitleRequest.select(:LT_TT_W_FN).distinct(), :LT_TT_W_FN, :LT_TT_W_FN) %>
 
-          <%= label_tag 'Beginning Date' %>
-          <%= date_field_tag :beginning_date, nil, id: "beginning_remit", class: 'datepicker' %>
+            <%= label_tag 'Beginning Date' %>
+            <%= date_field_tag :beginning_date, nil, id: "beginning_remit", class: 'datepicker' %>
 
-          <%= label_tag 'Ending Date' %>
-          <%= date_field_tag :ending_date, nil, id: "ending_remit", class: 'datepicker' %>
+            <%= label_tag 'Ending Date' %>
+            <%= date_field_tag :ending_date, nil, id: "ending_remit", class: 'datepicker' %>
 
-          <%= submit_tag 'Generate report', class: "btn btn-primary" %>
-        </div>
-      <% end %>
+            <%= submit_tag 'Generate report', class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
