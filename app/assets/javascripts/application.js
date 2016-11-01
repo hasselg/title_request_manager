@@ -14,3 +14,4 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require datatables
+//= require modernizr-custom

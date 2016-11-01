@@ -3,5 +3,5 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $('.datepicker').datepicker(altFormat: 'yy-mm-dd')
-  
+    if !Modernizr.inputtypes.date
+      $('.datepicker').datepicker(altFormat: 'yy-mm-dd')      
