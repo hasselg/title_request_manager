@@ -1,20 +1,17 @@
-$(document).ready(function(){
+jQuery(document).ready(function(){
 
   $('#requests').DataTable( {
-    ajax: {
-      url: "<%= ajax_path %>",
-      dataSrc: ''
-    },
-    columns: [
-      { data: "id",
-        render: function(data, type, full, meta) {
-                  return '<a href="<%= title_requests_path %>/' + data + '">View Full Details</a>';
-                }  },
-      { data: "file_no"},
-      { data: "last_name"},
-      { data: "first_name"},
-      { data: "file_opened"},
-      { data: "town"}
+    "processing": true,
+    "serverSide": true,
+    "ajax": $('#requests').data('source'),
+    "pagingType": "full_numbers",
+    "columns": [
+      { data: '0' },
+      { data: '1' },
+      { data: '2' },
+      { data: '3' },
+      { data: '4' },
+      { data: '5' },
     ],
   } );
 });
