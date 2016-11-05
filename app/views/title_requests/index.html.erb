@@ -8,26 +8,31 @@
 <%= stylesheet_link_tag "datatables" %>
 </head>
 
-<table id="requests" cellspacing="0" width="100%">
-  <thead>
-    <tr>
-      <th></th>
-      <th>File Number</th>
-      <th>Last Name</th>
-      <th>First Name</th>
-      <th>File Opened</th>
-      <th>Town</th>
-    </tr>
-  </thead>
-  <tfoot>
-    <tr>
-      <th></th>
-      <th>File Number</th>
-      <th>Last Name</th>
-      <th>First Name</th>
-      <th>File Opened</th>
-      <th>Town</th>
-    </tr>
-  </tfoot>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
       <table id="requests" cellspacing="0" data-source="<%= title_requests_path(format: :json) %>">
+        <thead>
+          <tr>
+            <th></th>
+            <th>File Number</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>File Opened</th>
+            <th>Town</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <th></th>
+            <th>File Number</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>File Opened</th>
+            <th>Town</th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
