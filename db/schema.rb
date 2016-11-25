@@ -34,9 +34,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.date     "COMMIT_ISS"
     t.date     "CLOSE_DATE"
     t.date     "MARKUP_RCD"
-    t.date     "REC_PAY_FN"
-    t.date     "REC_PAY_W"
-    t.date     "REC_PAY_TT"
+    t.date     "REC_PAY"
     t.date     "REC_DOC_RD"
     t.date     "REDATE_ABS"
     t.date     "POLICY_OUT"
@@ -69,11 +67,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.decimal  "STAND_AMNT"
     t.text     "RISK_CODE"
     t.decimal  "RISK_AMNT"
-    t.decimal  "FNTI_AMNT"
-    t.decimal  "FNTI_NEW"
-    t.decimal  "FNTI_4_11"
-    t.decimal  "TTIC_AMNT"
-    t.decimal  "WLTIC_AMNT"
+    t.decimal  "REMIT_AMNT"
     t.decimal  "PRIOR_AMNT"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
