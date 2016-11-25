@@ -7,21 +7,25 @@
   <%= form_for @titlerequest, :html => {class: 'form-horizontal'}, builder: TidyFormBuilder do |f| %>
     <fieldset disabled="disabled">
       <div class="row">
-          <div class="col-md-6">
+          <div>
             <%= render 'form_file_details', :f => f %>
-          </div>
-
-          <div class="col-md-6">
-            <%= render 'form_property_details', :f => f %>
           </div>
       </div>
 
       <div class="row">
-        <div class="col-md-6">
+        <div>
+          <%= render 'form_property_details', :f => f %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
           <%= render 'form_policy_dates', :f => f %>
         </div>
+      </div>
 
-        <div class="col-md-6">
+      <div class="row">
+        <div>
           <%= render 'form_policy_details', :f => f %>
         </div>
       </div>
