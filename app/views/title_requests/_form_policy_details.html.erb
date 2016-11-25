@@ -1,17 +1,81 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Policy Details</h3>
+    <h3 class="panel-title">Policies</h3>
   </div>
   <div class="panel-body">
 
-    <div class="form-group">
-      <%= f.label :MTG_AMOUNT %>
-      <%= f.currency_field :MTG_AMOUNT %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Bank Policy</h3>
+      </div>
+      <div class="panel-body">
+        <div class="form-group">
+          <%= f.label :MTG_AMOUNT, "Mortgage Amount" %>
+          <%= f.currency_field :MTG_AMOUNT %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :MTG_PREM %>
+          <%= f.currency_field :MTG_PREM %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :MTG_POLICY %>
+          <%= f.text_field :MTG_POLICY %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :SIMULT_MTG %>
+          <%= f.text_field :SIMULT_MTG %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :CONV_POLIC %>
+          <%= f.text_field :CONV_POLIC %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :M_POL_CODE %>
+          <%= f.text_field :M_POL_CODE %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :B_PREM_MTG %>
+          <%= f.currency_field :B_PREM_MTG %>
+        </div>
+      </div>
     </div>
 
-    <div class="form-group">
-      <%= f.label :MTG_PREM %>
-      <%= f.currency_field :MTG_PREM %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Owner's Policy</h3>
+      </div>
+      <div class="panel-body">
+        <div class="form-group">
+          <%= f.label :FEE_AMOUNT %>
+          <%= f.currency_field :FEE_AMOUNT %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :FEE_PREM %>
+          <%= f.currency_field :FEE_PREM %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :FEE_POLICY %>
+          <%= f.text_field :FEE_POLICY %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :O_POL_CODE %>
+          <%= f.text_field :O_POL_CODE %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :B_PREM_FEE %>
+          <%= f.currency_field :B_PREM_FEE %>
+        </div>
+      </div>
     </div>
 
     <div class="form-group">
@@ -35,31 +99,6 @@
     </div>
 
     <div class="form-group">
-      <%= f.label :MTG_POLICY %>
-      <%= f.text_field :MTG_POLICY %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :SIMULT_MTG %>
-      <%= f.text_field :SIMULT_MTG %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :CONV_POLIC %>
-      <%= f.text_field :CONV_POLIC %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :FEE_AMOUNT %>
-      <%= f.currency_field :FEE_AMOUNT %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :FEE_PREM %>
-      <%= f.currency_field :FEE_PREM %>
-    </div>
-
-    <div class="form-group">
       <%= f.label :FN_PREM_O %>
       <%= f.currency_field :FN_PREM_O %>
     </div>
@@ -80,28 +119,8 @@
     </div>
 
     <div class="form-group">
-      <%= f.label :FEE_POLICY %>
-      <%= f.text_field :FEE_POLICY %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :M_POL_CODE %>
-      <%= f.text_field :M_POL_CODE %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :O_POL_CODE %>
-      <%= f.text_field :O_POL_CODE %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :B_PREM_MTG %>
-      <%= f.currency_field :B_PREM_MTG %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :B_PREM_FEE %>
-      <%= f.currency_field :B_PREM_FEE %>
+      <%= f.label :PROP_CODE, "Prop Code" %>
+      <%= f.text_field :PROP_CODE, class: 'col-sm-9' %>
     </div>
 
     <div class="form-group">
@@ -125,32 +144,12 @@
     </div>
 
     <div class="form-group">
-      <%= f.label :FNTI_AMNT %>
-      <%= f.currency_field :FNTI_AMNT %>
+      <%= f.label :REMIT_AMNT, "Remittance Amount" %>
+      <%= f.currency_field :REMIT_AMNT %>
     </div>
 
     <div class="form-group">
-      <%= f.label :FNTI_NEW %>
-      <%= f.currency_field :FNTI_NEW %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :FNTI_4_11 %>
-      <%= f.currency_field :FNTI_4_11 %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :TTIC_AMNT %>
-      <%= f.currency_field :TTIC_AMNT %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :WLTIC_AMNT %>
-      <%= f.currency_field :WLTIC_AMNT %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :PRIOR_AMNT %>
+      <%= f.label :PRIOR_AMNT, "Prior Eligible Amount" %>
       <%= f.currency_field :PRIOR_AMNT %>
     </div>
 
