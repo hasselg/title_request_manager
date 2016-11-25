@@ -9,9 +9,7 @@ class TitleRequest < ApplicationRecord
   validates_date :COMMIT_ISS, :on_or_before => :today, :allow_blank => true
   validates_date :CLOSE_DATE, :on_or_before => :today, :allow_blank => true
   validates_date :MARKUP_RCD, :on_or_before => :today, :allow_blank => true
-  validates_date :REC_PAY_FN, :on_or_before => :today, :allow_blank => true
-  validates_date :REC_PAY_W, :on_or_before => :today, :allow_blank => true
-  validates_date :REC_PAY_TT, :on_or_before => :today, :allow_blank => true
+  validates_date :REC_PAY, :on_or_before => :today, :allow_blank => true
   validates_date :REC_DOC_RD, :on_or_before => :today, :allow_blank => true
   validates_date :REDATE_ABS, :on_or_before => :today, :allow_blank => true
   validates_date :POLICY_OUT, :on_or_before => :today, :allow_blank => true

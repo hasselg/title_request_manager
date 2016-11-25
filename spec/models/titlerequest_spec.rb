@@ -52,17 +52,7 @@ describe TitleRequest, type: :model do
     end
 
     it "has no rec pay fn in the future" do
-      titlerequest = build(:title_request, REC_PAY_FN: Time.zone.today + 4)
-      expect(titlerequest).to_not be_valid
-    end
-
-    it "has no rec pay w in the future" do
-      titlerequest = build(:title_request, REC_PAY_W: Time.zone.today + 4)
-      expect(titlerequest).to_not be_valid
-    end
-
-    it "has no rec pay tt in the future" do
-      titlerequest = build(:title_request, REC_PAY_TT: Time.zone.today + 4)
+      titlerequest = build(:title_request, REC_PAY: Time.zone.today + 4)
       expect(titlerequest).to_not be_valid
     end
 
@@ -92,4 +82,3 @@ describe TitleRequest, type: :model do
     end
   end
 end
-
