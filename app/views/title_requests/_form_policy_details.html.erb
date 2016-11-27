@@ -40,8 +40,13 @@
         </div>
 
         <div class="form-group">
-          <%= f.label :B_PREM_MTG %>
+          <%= f.label :B_PREM_MTG, "Base Premium" %>
           <%= f.currency_field :B_PREM_MTG %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :TOTAL_M_PREM, "Total Premium" %>
+          <%= f.currency_field :TOTAL_M_PREM %>
         </div>
       </div>
     </div>
@@ -72,50 +77,15 @@
         </div>
 
         <div class="form-group">
-          <%= f.label :B_PREM_FEE %>
+          <%= f.label :B_PREM_FEE, "Base Premium" %>
           <%= f.currency_field :B_PREM_FEE %>
         </div>
+
+        <div class="form-group">
+          <%= f.label :TOTAL_O_PREM, "Total Premium" %>
+          <%= f.currency_field :TOTAL_O_PREM %>
+        </div>
       </div>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :FN_PREM_M %>
-      <%= f.currency_field :FN_PREM_M %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :FN_PREM_M2 %>
-      <%= f.currency_field :FN_PREM_M2 %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :W_PREM_M3 %>
-      <%= f.currency_field :W_PREM_M3 %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :MTG_PREM_T %>
-      <%= f.currency_field :MTG_PREM_T %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :FN_PREM_O %>
-      <%= f.currency_field :FN_PREM_O %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :FN_PREM_O2 %>
-      <%= f.currency_field :FN_PREM_O2 %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :W_PREM_O3 %>
-      <%= f.currency_field :W_PREM_O3 %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :FEE_PREM_T %>
-      <%= f.currency_field :FEE_PREM_T %>
     </div>
 
     <div class="form-group">

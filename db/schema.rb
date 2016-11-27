@@ -44,20 +44,10 @@ ActiveRecord::Schema.define(version: 0) do
     t.text     "OR_RECD_BY"
     t.text     "REVIEW_BY"
     t.decimal  "MTG_AMOUNT"
-    t.decimal  "MTG_PREM"
-    t.decimal  "FN_PREM_M"
-    t.decimal  "FN_PREM_M2"
-    t.decimal  "W_PREM_M3"
-    t.decimal  "MTG_PREM_T"
     t.text     "MTG_POLICY"
     t.text     "SIMULT_MTG"
     t.text     "CONV_POLIC"
     t.decimal  "FEE_AMOUNT"
-    t.decimal  "FEE_PREM"
-    t.decimal  "FN_PREM_O"
-    t.decimal  "FN_PREM_O2"
-    t.decimal  "W_PREM_O3"
-    t.decimal  "FEE_PREM_T"
     t.text     "FEE_POLICY"
     t.text     "M_POL_CODE"
     t.text     "O_POL_CODE"
@@ -69,8 +59,10 @@ ActiveRecord::Schema.define(version: 0) do
     t.decimal  "RISK_AMNT"
     t.decimal  "REMIT_AMNT"
     t.decimal  "PRIOR_AMNT"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.decimal  "TOTAL_M_PREM"
+    t.decimal  "TOTAL_O_PREM"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
 end
