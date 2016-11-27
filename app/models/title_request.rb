@@ -50,16 +50,8 @@ class TitleRequest < ApplicationRecord
     self[:MARKUP_RCD] = Timeliness.parse(v)
   end
 
-  def REC_PAY_FN=(v)
-    self[:REC_PAY_FN] = Timeliness.parse(v)
-  end
-
-  def REC_PAY_W=(v)
-    self[:REC_PAY_W] = Timeliness.parse(v)
-  end
-
-  def REC_PAY_TT=(v)
-    self[:REC_PAY_TT] = Timeliness.parse(v)
+  def REC_PAY=(v)
+    self[:REC_PAY] = Timeliness.parse(v)
   end
 
   def REC_DOC_RD=(v)
@@ -100,63 +92,6 @@ class TitleRequest < ApplicationRecord
   scope :file_not_closed, -> {
     where("FILE_CLOSE IS NULL OR FILE_CLOSE = \"\"")
   }
-
-  def get_total_mtg_premium
-    case self[:LT_TT_W_FN]
-      when "LT"
-        total = self[:MTG_PREM] ||= 0
-      when "TT"
-        total = self[:MTG_PREM_T] ||= 0
-      when "W"
-        total = self[:W_PREM_M3] ||= 0
-      when "FN"
-        m = self[:FN_PREM_M] ||= 0
-        m2 = self[:FN_PREM_M2] ||= 0
-        total = m + m2
-      else
-        total = 0
-    end
-
-    total
-  end
-
-  def get_total_owner_premium
-    case self[:LT_TT_W_FN]
-      when "LT"
-        total = self[:FEE_PREM] ||= 0
-      when "TT"
-        total = self[:FEE_PREM_T] ||= 0
-      when "W"
-        total = self[:W_PREM_O3] ||= 0
-      when "FN"
-        o = self[:FN_PREM_O] ||= 0
-        o2 = self[:FN_PREM_O2] ||= 0
-        total = o + o2
-      else
-        total = 0
-    end
-
-    total
-  end
-
-  def get_remittance_amount
-    case self[:LT_TT_W_FN]
-      when "TT"
-        total = self[:TTIC_AMNT]
-      when "W"
-        total = self[:WLTIC_AMNT]
-      when "FN", "LT"
-        amnt1 = self[:FNTI_AMNT] ||= 0
-        amnt2 = self[:FNTI_NEW] ||= 0
-        amnt3 = self[:FNTI_4_11] ||= 0
-
-        total = amnt1 + amnt2 + amnt3
-      else
-        total = 0
-    end
-
-    total
-  end
 
   def get_open_summary
     {

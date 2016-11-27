@@ -107,7 +107,7 @@ wb.styles do |s|
       mtg_row[9] = req.B_PREM_MTG ||= 0
       mtg_row[10] = req.STAND_AMNT ||= 0
       mtg_row[11] = req.RISK_AMNT ||= 0
-      mtg_row[12] = req.get_total_mtg_premium()
+      mtg_row[12] = req.TOTAL_M_PREM ||= 0
       mtg_row[14] = 0
 
       # Setup owner's row
@@ -117,8 +117,8 @@ wb.styles do |s|
       owners_row[4] = req.FEE_AMOUNT ||= 0
       owners_row[5] = req.O_POL_CODE
       owners_row[9] = req.B_PREM_FEE ||= 0
-      owners_row[12] = req.get_total_owner_premium()
-      owners_row[14] = req.get_remittance_amount()
+      owners_row[12] = req.TOTAL_O_PREM ||= 0
+      owners_row[14] = req.REMIT_AMNT ||= 0
 
       mtg_row_styles = [wrapped] * 16
       mtg_row_styles[2] = code_top

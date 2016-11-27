@@ -70,24 +70,10 @@ class TitleRequestsController < ApplicationController
     @ending_date = Timeliness.parse(params[:ending_date])
     @underwriter = params[:underwriter]
 
-    case @underwriter
-    when "LT"
-      @underwriter_name = "Lawyer's Title Insurance Company"
-      @titlerequests = TitleRequest.where("REC_PAY_FN >= ? AND REC_PAY_FN <= ?",
-        @beginning_date, @ending_date).order(:CLOSE_DATE)
-    when "TT"
-      @underwriter_name = "TICOR Title Insurance Company"
-      @titlerequests = TitleRequest.where("REC_PAY_TT >= ? AND REC_PAY_TT <= ?",
-        @beginning_date, @ending_date).order(:CLOSE_DATE)
-    when "W"
-      @underwriter_name = "Westcor Title Insurance Company"
-      @titlerequests = TitleRequest.where("REC_PAY_W >= ? AND REC_PAY_W <= ?",
-        @beginning_date, @ending_date).order(:CLOSE_DATE)
-    when "FN"
-      @underwriter_name = "Fidelity National Title Insurance Company"
-      @titlerequests = TitleRequest.where("REC_PAY_FN >= ? AND REC_PAY_FN <= ?",
-        @beginning_date, @ending_date).order(:CLOSE_DATE)
-    end
+    @titlerequests = TitleRequest.where("REC_PAY >= ? AND REC_PAY <= ? AND LT_TT_W_FN = ?",
+      @beginning_date, @ending_date, @underwriter).order(:CLOSE_DATE)
+
+    Rails.logger.debug("#{@titlerequests.count} requests found")
 
     render xlsx: 'remittance_report', filename: "remitted_requests.xlsx", xlsx_use_shared_strings: true
   end
