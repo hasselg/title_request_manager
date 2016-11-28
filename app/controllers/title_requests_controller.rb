@@ -80,6 +80,11 @@ class TitleRequestsController < ApplicationController
       when "FN"
         @underwriter_name = "Fidelity National Title Insurance Company"
     end
+
+    @official = Settings.agency.certifying_official.upcase
+    @agency = Settings.agency.name
+    @agency_number = Settings.agency.number
+
     @titlerequests = TitleRequest.where("REC_PAY >= ? AND REC_PAY <= ? AND LT_TT_W_FN = ?",
       @beginning_date, @ending_date, @underwriter).order(:CLOSE_DATE)
 
