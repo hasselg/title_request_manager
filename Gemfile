@@ -20,9 +20,8 @@ gem 'timeliness', '~> 0.3.8'
 gem 'validates_timeliness', '~> 4.0'
 
 # Reporting
-gem 'axlsx'
-gem 'acts_as_xlsx'
-gem 'axlsx_rails'
+gem 'axlsx', '~> 2.1.0.pre'
+gem 'axlsx_rails', '~> 0.5.0'
 
 group :development, :test do
   gem 'byebug', platform: :mri
