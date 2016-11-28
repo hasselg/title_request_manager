@@ -70,6 +70,16 @@ class TitleRequestsController < ApplicationController
     @ending_date = Timeliness.parse(params[:ending_date])
     @underwriter = params[:underwriter]
 
+    case @underwriter
+      when "LT"
+        @underwriter_name = "Lawyer's Title Insurance Company"
+      when "TT"
+        @underwriter_name = "TICOR Title Insurance Company"
+      when "W"
+        @underwriter_name = "Westcor Title Insurance Company"
+      when "FN"
+        @underwriter_name = "Fidelity National Title Insurance Company"
+    end
     @titlerequests = TitleRequest.where("REC_PAY >= ? AND REC_PAY <= ? AND LT_TT_W_FN = ?",
       @beginning_date, @ending_date, @underwriter).order(:CLOSE_DATE)
 
