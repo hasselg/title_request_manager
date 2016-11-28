@@ -83,9 +83,14 @@ class TitleRequestsController < ApplicationController
     @titlerequests = TitleRequest.where("REC_PAY >= ? AND REC_PAY <= ? AND LT_TT_W_FN = ?",
       @beginning_date, @ending_date, @underwriter).order(:CLOSE_DATE)
 
-    Rails.logger.debug("#{@titlerequests.count} requests found")
+    @sum_base_premiums = @titlerequests.sum(:B_PREM_MTG) + @titlerequests.sum(:B_PREM_FEE)
+    @sum_stand_end_premiums = @titlerequests.sum(:STAND_AMNT)
+    @sum_risk_end_premiums = @titlerequests.sum(:RISK_AMNT)
+    @sum_total_premiums = @titlerequests.sum(:TOTAL_M_PREM) + @titlerequests.sum(:TOTAL_O_PREM)
+    @sum_remittance = @titlerequests.sum(:REMIT_AMNT)
 
-    render xlsx: 'remittance_report', filename: "remitted_requests.xlsx", xlsx_use_shared_strings: true
+    render xlsx: 'remittance_report', filename: "remitted_requests.xlsx",
+      xlsx_use_shared_strings: true
   end
 
   private
