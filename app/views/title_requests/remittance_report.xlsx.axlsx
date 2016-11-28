@@ -1,188 +1,178 @@
-p = xlsx_package
-p.use_shared_strings = true
-wb = p.workbook
+wb = xlsx_package.workbook
 
-wb.styles do |s|
-  certification_border = s.add_style :border => { :style => :thick, :color => '00000000', :edges => [:top] }, sz: 10
+# Page setup
+setup = {:orientation => :landscape, :paper_size => 5, :fit_to_width => 1,
+  :fit_to_height => 999}
+margins = {:left => 0.7, :right => 0.7, :bottom => 0.75, :top => 0.75,
+  :header => 0.3, :footer => 0.3 }
 
-  centered = s.add_style :alignment => {:horizontal => :center}, sz: 8
-  wrapped = s.add_style :alignment => {:wrap_text => true}, sz: 8
-  wrapped_dashed_border = s.add_style alignment: {wrap_text: true}, border: {style: :dashed, color: '00000000', edges: [:bottom]}, sz: 8
-  wrapped_centered_dashed_border = s.add_style alignment: {horizontal: :center, wrap_text: true}, border: {style: :dashed, color: '00000000', edges: [:bottom]}, sz: 8
+sheet = wb.add_worksheet(name: "Remittance Report", :page_setup => setup, :page_margins => margins)
 
-  date_time_top = s.add_style :num_fmt => 14, :alignment => {:wrap_text => true}, sz: 8
-  date_time_bottom = s.add_style :num_fmt => 14, alignment: {wrap_text: true}, border: {style: :dashed, color: '00000000', edges: [:bottom]}, sz: 8
+# Custom styles
+certification_border = sheet.styles.add_style(:border => { :style => :thick, :color => '00000000', :edges => [:top] }, sz: 10)
+centered = sheet.styles.add_style(:alignment => {:horizontal => :center}, sz: 8)
 
-  currency_top = s.add_style :num_fmt => 7, alignment: {horizontal: :right, wrap_text: true}, sz: 8
-  currency_bottom = s.add_style :num_fmt => 7, alignment: {horizontal: :right, wrap_text: true}, border: {style: :dashed, color: '00000000', edges: [:bottom]}, sz: 8
+wrapped = sheet.styles.add_style(:alignment => {:wrap_text => true}, sz: 8)
+wrapped_dashed_border = sheet.styles.add_style(alignment: {wrap_text: true}, border: {style: :dashed, color: '00000000', edges: [:bottom]}, sz: 8)
+wrapped_centered_dashed_border = sheet.styles.add_style(alignment: {horizontal: :center, wrap_text: true}, border: {style: :dashed, color: '00000000', edges: [:bottom]}, sz: 8)
 
-  code_top = s.add_style alignment: {horizontal: :right, wrap_text: true}, sz: 8
-  code_bottom = s.add_style alignment: {horizontal: :right, wrap_text: true}, border: {style: :dashed, color: '00000000', edges: [:bottom]}, sz: 8
+date_time_top = sheet.styles.add_style(:num_fmt => 14, :alignment => {:wrap_text => true}, sz: 8)
+date_time_bottom = sheet.styles.add_style(:num_fmt => 14, alignment: {wrap_text: true}, border: {style: :dashed, color: '00000000', edges: [:bottom]}, sz: 8)
 
-  setup = {:orientation => :landscape, :paper_size => 5, :fit_to_width => 1, :fit_to_height => 999}
-  margins = {:left => 0.7, :right => 0.7, :bottom => 0.75, :top => 0.75, :header => 0.3, :footer => 0.3 }
+currency_top = sheet.styles.add_style(:num_fmt => 7, alignment: {horizontal: :right,
+  wrap_text: true}, sz: 8)
+currency_bottom = sheet.styles.add_style(:num_fmt => 7, alignment: {horizontal: :right,
+  wrap_text: true}, border: {style: :dashed, color: '00000000',
+    edges: [:bottom]}, sz: 8)
 
-  wb.add_worksheet(name: "Remittance Report", :page_setup => setup,
-    :page_margins => margins) do |sheet|
+code_top = sheet.styles.add_style(alignment: {horizontal: :right, wrap_text: true}, sz: 8)
+code_bottom = sheet.styles.add_style(alignment: {horizontal: :right, wrap_text: true},
+  border: {style: :dashed, color: '00000000', edges: [:bottom]}, sz: 8)
 
-    left_11 = "AGENCY: #{Settings.agency.name}"
-    left_12 = "AGENT NO. #{Settings.agency.number}"
-    left_3 = "UNDERWRITER: #{@underwriter_name.upcase}"
-    left_5 = "REPORT FOR THE MONTH ENDING #{@ending_date.strftime('%B %Y').upcase}"
 
-    center_1 = "TITLE INSURANCE AGENCY REMITTANCE FORM"
-    center_3 = "USE OF THIS FORM BY ALL TITLE"
-    center_4 = "INSURANCE AGENCIES"
-    center_5 = "MANDATED BY THE NYSID"
+left_11 = "AGENCY: #{@agency}"
+left_12 = "AGENT NO. #{@agency_number}"
+left_3 = "UNDERWRITER: #{@underwriter_name}"
+left_5 = "REPORT FOR THE MONTH ENDING #{@ending_date.strftime('%B %Y').upcase}"
 
-    right_1 = "I, #{Settings.agency.certifying_official.upcase}, CERTIFY THAT THIS IS A TRUE AND CORRECT REPORT OF ALL"
-    right_2 = "TRANSACTIONS OF THIS AGENCY FOR THIS UNDERWRITER FOR THE MONTH INDICATED"
-    right_51 = "SIGNATURE"
-    right_52 = "DATE"
+center_1 = "TITLE INSURANCE AGENCY REMITTANCE FORM"
+center_3 = "USE OF THIS FORM BY ALL TITLE"
+center_4 = "INSURANCE AGENCIES"
+center_5 = "MANDATED BY THE NYSID"
 
-    st = [nil] * 16
-    st[6] = centered
-    sheet.add_row [left_11, nil, nil, left_12, nil, nil, center_1, nil, nil, nil, right_1, nil, nil, nil, nil, nil], style: st, sz: 8, widths: [:ignore] * 16
-    sheet.merge_cells "A1:C1"
-    sheet.merge_cells "D1:F1"
-    sheet.merge_cells "G1:J1"
-    sheet.merge_cells "K1:P1"
+right_1 = "I, #{@official}, CERTIFY THAT THIS IS A TRUE AND CORRECT REPORT OF ALL"
+right_2 = "TRANSACTIONS OF THIS AGENCY FOR THIS UNDERWRITER FOR THE MONTH INDICATED"
+right_51 = "SIGNATURE"
+right_52 = "DATE"
 
-    sheet.add_row [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, right_2, nil, nil, nil, nil, nil], sz: 8, widths: [:ignore] * 16
-    sheet.merge_cells "K2:P2"
+st = [nil] * 16
+st[6] = centered
+sheet.add_row [left_11, nil, nil, left_12, nil, nil, center_1, nil, nil, nil, right_1, nil, nil, nil, nil, nil], style: st, sz: 8, widths: [:ignore] * 16
+sheet.merge_cells "A1:C1"
+sheet.merge_cells "D1:F1"
+sheet.merge_cells "G1:J1"
+sheet.merge_cells "K1:P1"
 
-    sheet.add_row [left_3, nil, nil, nil, nil, nil, center_3, nil, nil, nil, nil, nil, nil, nil, nil, nil], style: st, sz: 8, widths: [:ignore] * 16
-    sheet.merge_cells "A3:F3"
-    sheet.merge_cells "G3:J3"
+sheet.add_row [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, right_2, nil, nil, nil, nil, nil], sz: 8, widths: [:ignore] * 16
+sheet.merge_cells "K2:P2"
 
-    sheet.add_row [nil, nil, nil, nil, nil, nil, center_4, nil, nil, nil, nil, nil, nil, nil, nil, nil], style: st, sz: 8, widths: [:ignore] * 16
-    sheet.merge_cells "G4:J4"
-    sheet.merge_cells "K4:N4"
+sheet.add_row [left_3, nil, nil, nil, nil, nil, center_3, nil, nil, nil, nil, nil, nil, nil, nil, nil], style: st, sz: 8, widths: [:ignore] * 16
+sheet.merge_cells "A3:F3"
+sheet.merge_cells "G3:J3"
 
-    st[10] = certification_border
-    st[14] = certification_border
-    sheet.add_row [left_5, nil, nil, nil, nil, nil, center_5, nil, nil, nil, right_51, nil, nil, nil, right_52, nil], style: st, sz: 8, widths: [:ignore] * 16
+sheet.add_row [nil, nil, nil, nil, nil, nil, center_4, nil, nil, nil, nil, nil, nil, nil, nil, nil], style: st, sz: 8, widths: [:ignore] * 16
+sheet.merge_cells "G4:J4"
+sheet.merge_cells "K4:N4"
 
-    sheet.merge_cells "A5:F5"
-    sheet.merge_cells "G5:J5"
-    sheet.merge_cells "K5:N5"
-    sheet.merge_cells "O5:P5"
-    sheet["K5:N5"].each { |c| c.style = certification_border }
-    sheet["O5:P5"].each { |c| c.style = certification_border }
+st[10] = certification_border
+st[14] = certification_border
+sheet.add_row [left_5, nil, nil, nil, nil, nil, center_5, nil, nil, nil, right_51, nil, nil, nil, right_52, nil], style: st, sz: 8, widths: [:ignore] * 16
 
-    sheet.add_row [nil] * 16
-    sheet.add_row ["1", "2", "3", "4", "5", "6A", "6B", "6C", "7", "8", "9", "10", "11", "12", "13", "14"], :style => centered, sz: 8, widths: [:ignore] * 16
+sheet.merge_cells "A5:F5"
+sheet.merge_cells "G5:J5"
+sheet.merge_cells "K5:N5"
+sheet.merge_cells "O5:P5"
+sheet["K5:N5"].each { |c| c.style = certification_border }
+sheet["O5:P5"].each { |c| c.style = certification_border }
 
-    custom_widths = [48/6, 78/6, 30/6, 50/6, 65/6, 36/6, 75/6, 50/6, 65/6, 60/6, 65/6, 60/6, 50/6, 66/6, 66/6, 75/6]
+sheet.add_row [nil] * 16
+sheet.add_row ["1", "2", "3", "4", "5", "6A", "6B", "6C", "7", "8", "9", "10", "11", "12", "13", "14"], :style => centered, sz: 8, widths: [:ignore] * 16
 
-    sheet.add_row ["AGENCY\r\nFILE NO", "UNDERWRITER\rFILE NUMBER", "CO.\rCODE\rPROP.\rCODE", "DATE OF\rCLOSING",
-      "AMOUNT OF\rINSURANCE", "POLICY\rCODE", "CODE(S)\rSTANDARD\rENDORSEMENTS", "CODE(S)\rSPEC RISK\rENDORSE.",
-      "PRIOR\rELIGIBLE\rAMOUNT", "BASE\rPREMIUMS\rPOLICIES", "GROSS\rPREMIUMS\rSTAND END.", "GROSS\rPREMIUMS\rRISK END.",
-      "TOTAL\rPREMIUMS", "REINSURANCE\rEXPENSES", "AMOUNT\rREMITTED TO\rUNDERWRITER",
-      "REMARKS, E.G.\rTRANSACTION\rTYPE, PROPERTY\rTYPE, ETC."], style: wrapped_centered_dashed_border, widths: custom_widths
+custom_widths = [48/6, 78/6, 30/6, 50/6, 65/6, 36/6, 75/6, 50/6, 65/6, 60/6, 65/6, 60/6, 50/6, 66/6, 66/6, 75/6]
 
-    sum_base_premiums = 0
-    sum_stand_end_premiums = 0
-    sum_risk_end_premiums = 0
-    sum_total_premiums = 0
-    sum_remittance = 0
-    count_mtg = 0
-    count_owners = 0
+sheet.add_row ["AGENCY\r\nFILE NO", "UNDERWRITER\rFILE NUMBER", "CO.\rCODE\rPROP.\rCODE", "DATE OF\rCLOSING",
+  "AMOUNT OF\rINSURANCE", "POLICY\rCODE", "CODE(S)\rSTANDARD\rENDORSEMENTS", "CODE(S)\rSPEC RISK\rENDORSE.",
+  "PRIOR\rELIGIBLE\rAMOUNT", "BASE\rPREMIUMS\rPOLICIES", "GROSS\rPREMIUMS\rSTAND END.", "GROSS\rPREMIUMS\rRISK END.",
+  "TOTAL\rPREMIUMS", "REINSURANCE\rEXPENSES", "AMOUNT\rREMITTED TO\rUNDERWRITER",
+  "REMARKS, E.G.\rTRANSACTION\rTYPE, PROPERTY\rTYPE, ETC."], style: wrapped_centered_dashed_border, widths: custom_widths
 
-    @titlerequests.each do |req|
+count_mtg = 0
+count_owners = 0
 
-      owners_row = [nil] * 16
-      mtg_row = [nil] * 16
+@titlerequests.each do |req|
 
-      # Setup mtg row
-      mtg_row[0] = req.FILE_NO
-      mtg_row[1] = req.MTG_POLICY ||= req.SIMULT_MTG ||= req.CONV_POLIC
-      mtg_row[2] = req.COUNTY
-      mtg_row[3] = req.CLOSE_DATE
-      mtg_row[4] = req.MTG_AMOUNT ||= 0
-      mtg_row[5] = req.M_POL_CODE
-      mtg_row[6] = req.STAND_CODE
-      mtg_row[7] = req.RISK_CODE
-      mtg_row[8] = req.PRIOR_AMNT ||= 0
-      mtg_row[9] = req.B_PREM_MTG ||= 0
-      mtg_row[10] = req.STAND_AMNT ||= 0
-      mtg_row[11] = req.RISK_AMNT ||= 0
-      mtg_row[12] = req.TOTAL_M_PREM ||= 0
-      mtg_row[14] = 0
+  owners_row = [nil] * 16
+  mtg_row = [nil] * 16
 
-      # Setup owner's row
-      owners_row[0] = req.FILE_NO
-      owners_row[1] = req.FEE_POLICY
-      owners_row[2] = req.PROP_CODE
-      owners_row[4] = req.FEE_AMOUNT ||= 0
-      owners_row[5] = req.O_POL_CODE
-      owners_row[9] = req.B_PREM_FEE ||= 0
-      owners_row[12] = req.TOTAL_O_PREM ||= 0
-      owners_row[14] = req.REMIT_AMNT ||= 0
+  # Setup mtg row
+  mtg_row[0] = req.FILE_NO
+  mtg_row[1] = req.MTG_POLICY ||= req.SIMULT_MTG ||= req.CONV_POLIC
+  mtg_row[2] = req.COUNTY
+  mtg_row[3] = req.CLOSE_DATE
+  mtg_row[4] = req.MTG_AMOUNT ||= 0
+  mtg_row[5] = req.M_POL_CODE
+  mtg_row[6] = req.STAND_CODE
+  mtg_row[7] = req.RISK_CODE
+  mtg_row[8] = req.PRIOR_AMNT ||= 0
+  mtg_row[9] = req.B_PREM_MTG ||= 0
+  mtg_row[10] = req.STAND_AMNT ||= 0
+  mtg_row[11] = req.RISK_AMNT ||= 0
+  mtg_row[12] = req.TOTAL_M_PREM ||= 0
+  mtg_row[14] = 0
 
-      mtg_row_styles = [wrapped] * 16
-      mtg_row_styles[2] = code_top
-      mtg_row_styles[3] = date_time_top
-      mtg_row_styles[4] = currency_top
-      mtg_row_styles[8] = currency_top
-      mtg_row_styles[9] = currency_top
-      mtg_row_styles[10] = currency_top
-      mtg_row_styles[11] = currency_top
-      mtg_row_styles[12] = currency_top
-      mtg_row_styles[14] = currency_top
+  # Setup owner's row
+  owners_row[0] = req.FILE_NO
+  owners_row[1] = req.FEE_POLICY
+  owners_row[2] = req.PROP_CODE
+  owners_row[4] = req.FEE_AMOUNT ||= 0
+  owners_row[5] = req.O_POL_CODE
+  owners_row[9] = req.B_PREM_FEE ||= 0
+  owners_row[12] = req.TOTAL_O_PREM ||= 0
+  owners_row[14] = req.REMIT_AMNT ||= 0
 
-      owners_row_styles = [wrapped_dashed_border] * 16
-      owners_row_styles[2] = code_bottom
-      owners_row_styles[3] = date_time_bottom
-      owners_row_styles[4] = currency_bottom
-      owners_row_styles[8] = currency_bottom
-      owners_row_styles[9] = currency_bottom
-      owners_row_styles[10] = currency_bottom
-      owners_row_styles[11] = currency_bottom
-      owners_row_styles[12] = currency_bottom
-      owners_row_styles[14] = currency_bottom
+  mtg_row_styles = [wrapped] * 16
+  mtg_row_styles[2] = code_top
+  mtg_row_styles[3] = date_time_top
+  mtg_row_styles[4] = currency_top
+  mtg_row_styles[8] = currency_top
+  mtg_row_styles[9] = currency_top
+  mtg_row_styles[10] = currency_top
+  mtg_row_styles[11] = currency_top
+  mtg_row_styles[12] = currency_top
+  mtg_row_styles[14] = currency_top
 
-      sheet.add_row mtg_row, style: mtg_row_styles, widths: [:ignore] * 16
-      foo = sheet.add_row owners_row, style: owners_row_styles, widths: [:ignore] * 16
+  owners_row_styles = [wrapped_dashed_border] * 16
+  owners_row_styles[2] = code_bottom
+  owners_row_styles[3] = date_time_bottom
+  owners_row_styles[4] = currency_bottom
+  owners_row_styles[8] = currency_bottom
+  owners_row_styles[9] = currency_bottom
+  owners_row_styles[10] = currency_bottom
+  owners_row_styles[11] = currency_bottom
+  owners_row_styles[12] = currency_bottom
+  owners_row_styles[14] = currency_bottom
 
-      logger.debug(foo.index())
-      # Do our book keeping for report summary
-      count_mtg += 1 unless mtg_row[1].blank?
-      count_owners += 1 unless owners_row[1].blank?
+  sheet.add_row mtg_row, style: mtg_row_styles, widths: [:ignore] * 16
+  sheet.add_row owners_row, style: owners_row_styles, widths: [:ignore] * 16
 
-      sum_base_premiums += mtg_row[9] + owners_row[9]
-      sum_stand_end_premiums += mtg_row[10]
-      sum_risk_end_premiums += mtg_row[11]
-      sum_total_premiums += mtg_row[12] + owners_row[12]
-      sum_remittance += mtg_row[14] + owners_row[14]
-    end
-
-    summary_row_1 = [nil] * 16
-    summary_row_2 = [nil] * 16
-
-    summary_row_1[0] = "Total Mortage Policies: #{count_mtg}"
-    summary_row_1[9] = sum_base_premiums
-    summary_row_1[10] = sum_stand_end_premiums
-    summary_row_1[11] = sum_risk_end_premiums
-    summary_row_1[12] = sum_total_premiums
-    summary_row_1[14] = sum_remittance
-    summary_row_2[0] = "Total Owner Policies: #{count_owners}"
-
-    st = [nil] * 16
-    st[0] = wrapped
-    st[9] = currency_top
-    st[10] = currency_top
-    st[11] = currency_top
-    st[12] = currency_top
-    st[14] = currency_top
-    row = sheet.add_row summary_row_1, style: st
-    logger.debug(row)
-    logger.debug(row.index)
-    idx = row.index + 1
-    sheet.merge_cells "A#{idx}:C#{idx}"
-
-    row = sheet.add_row summary_row_2, style: wrapped
-    idx = row.index + 1
-    sheet.merge_cells "A#{idx}:C#{idx}"
-  end
+  # Do our book keeping for report summary
+  count_mtg += 1 unless mtg_row[1].blank?
+  count_owners += 1 unless owners_row[1].blank?
 end
+
+summary_row_1 = [nil] * 16
+summary_row_2 = [nil] * 16
+
+summary_row_1[0] = "Total Mortage Policies: #{count_mtg}"
+summary_row_1[9] = @sum_base_premiums
+summary_row_1[10] = @sum_stand_end_premiums
+summary_row_1[11] = @sum_risk_end_premiums
+summary_row_1[12] = @sum_total_premiums
+summary_row_1[14] = @sum_remittance
+summary_row_2[0] = "Total Owner Policies: #{count_owners}"
+
+st = [nil] * 16
+st[0] = wrapped
+st[9] = currency_top
+st[10] = currency_top
+st[11] = currency_top
+st[12] = currency_top
+st[14] = currency_top
+row = sheet.add_row summary_row_1, style: st
+
+idx = row.row_index + 1
+sheet.merge_cells "A#{idx}:C#{idx}"
+
+row = sheet.add_row summary_row_2, style: wrapped
+idx = row.row_index + 1
+sheet.merge_cells "A#{idx}:C#{idx}"
