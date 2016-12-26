@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161215003116) do
+ActiveRecord::Schema.define(version: 20161217192042) do
 
   create_table "Title_Requests", force: :cascade do |t|
     t.text     "LAST_NAME"
@@ -78,7 +78,6 @@ ActiveRecord::Schema.define(version: 20161215003116) do
     t.datetime "locked_at"
     t.boolean  "admin",               default: false
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index [nil], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
