@@ -31,7 +31,7 @@ group :production do
 end
 
 group :development, :test do
-  gem 'sqlite3'
+  gem 'sqlite3', '~> 1.3.12'
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5'
   gem 'rspec-core', '~> 3.5.4'
