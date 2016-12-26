@@ -21,6 +21,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'timeliness', '~> 0.3.8'
 gem 'validates_timeliness', '~> 4.0'
+gem 'font-awesome-rails', '~> 4.7.0'
 
 # Reporting
 gem 'axlsx', '~> 2.1.0.pre'
