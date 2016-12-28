@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20161217192042) do
 
-  create_table "Title_Requests", force: :cascade do |t|
+  create_table "title_requests", force: :cascade do |t|
     t.text     "LAST_NAME"
     t.text     "FIRST_NAME"
     t.text     "SELLER"
