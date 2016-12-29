@@ -6,11 +6,11 @@ class TitleRequestDatatable < AjaxDatatablesRails::Base
     @sortable_columns ||=
     [
       "TitleRequest.id",
-      "TitleRequest.FILE_NO",
-      "TitleRequest.LAST_NAME",
-      "TitleRequest.FIRST_NAME",
-      "TitleRequest.FILEOPENED",
-      "TitleRequest.TOWN",
+      "TitleRequest.file_no",
+      "TitleRequest.last_name",
+      "TitleRequest.first_name",
+      "TitleRequest.fileopened",
+      "TitleRequest.town",
     ]
   end
 
@@ -19,11 +19,11 @@ class TitleRequestDatatable < AjaxDatatablesRails::Base
     @searchable_columns ||=
     [
       "TitleRequest.id",
-      "TitleRequest.FILE_NO",
-      "TitleRequest.LAST_NAME",
-      "TitleRequest.FIRST_NAME",
-      "TitleRequest.FILEOPENED",
-      "TitleRequest.TOWN",
+      "TitleRequest.file_no",
+      "TitleRequest.last_name",
+      "TitleRequest.first_name",
+      "TitleRequest.fileopened",
+      "TitleRequest.town",
     ]
   end
 
@@ -37,11 +37,11 @@ class TitleRequestDatatable < AjaxDatatablesRails::Base
         # comma separated list of the values for each cell of a table row
         # example: record.attribute,
         link_to("View Full Details", title_request_path(record)),
-        record.FILE_NO,
-        record.LAST_NAME,
-        record.FIRST_NAME,
-        record.FILEOPENED,
-        record.TOWN
+        record.file_no,
+        record.last_name,
+        record.first_name,
+        record.fileopened,
+        record.town
       ]
     end
   end

@@ -1,108 +1,108 @@
 class TitleRequest < ApplicationRecord
-  validates_presence_of :LAST_NAME
-  validates_date :ORDER_RECD, :on_or_before => :today, :allow_blank => true
-  validates_date :FILEOPENED, :on_or_before => :today, :allow_blank => true
-  validates_date :TIT_REVIEW, :on_or_before => :today, :on_or_after => :FILEOPENED,
+  validates_presence_of :last_name
+  validates_date :order_recd, :on_or_before => :today, :allow_blank => true
+  validates_date :fileopened, :on_or_before => :today, :allow_blank => true
+  validates_date :tit_review, :on_or_before => :today, :on_or_after => :fileopened,
     :allow_blank => true
-  validates_date :COMMIT_OUT, :on_or_before => :today, :allow_blank => true
-  validates_date :COMMIT_BCK, :on_or_before => :today, :allow_blank => true
-  validates_date :COMMIT_ISS, :on_or_before => :today, :allow_blank => true
-  validates_date :CLOSE_DATE, :on_or_before => :today, :allow_blank => true
-  validates_date :MARKUP_RCD, :on_or_before => :today, :allow_blank => true
-  validates_date :REC_PAY, :on_or_before => :today, :allow_blank => true
-  validates_date :REC_DOC_RD, :on_or_before => :today, :allow_blank => true
-  validates_date :REDATE_ABS, :on_or_before => :today, :allow_blank => true
-  validates_date :POLICY_OUT, :on_or_before => :today, :allow_blank => true
-  validates_date :POLICY_BCK, :on_or_before => :today, :allow_blank => true
-  validates_date :POLICY_ISS, :on_or_before => :today, :allow_blank => true
-  validates_date :FILE_CLOSE, :on_or_before => :today,
-    :after => :FILEOPENED, :allow_blank => true
+  validates_date :commit_out, :on_or_before => :today, :allow_blank => true
+  validates_date :commit_bck, :on_or_before => :today, :allow_blank => true
+  validates_date :commit_iss, :on_or_before => :today, :allow_blank => true
+  validates_date :close_date, :on_or_before => :today, :allow_blank => true
+  validates_date :markup_rcd, :on_or_before => :today, :allow_blank => true
+  validates_date :rec_pay, :on_or_before => :today, :allow_blank => true
+  validates_date :rec_doc_rd, :on_or_before => :today, :allow_blank => true
+  validates_date :redate_abs, :on_or_before => :today, :allow_blank => true
+  validates_date :policy_out, :on_or_before => :today, :allow_blank => true
+  validates_date :policy_bck, :on_or_before => :today, :allow_blank => true
+  validates_date :policy_iss, :on_or_before => :today, :allow_blank => true
+  validates_date :file_close, :on_or_before => :today,
+    :after => :fileopened, :allow_blank => true
 
-  def ORDER_RECD=(v)
-    self[:ORDER_RECD] = Timeliness.parse(v)
+  def order_recd=(v)
+    self[:order_recd] = Timeliness.parse(v)
   end
 
-  def FILEOPENED=(v)
-    self[:FILEOPENED] = Timeliness.parse(v)
+  def fileopened=(v)
+    self[:fileopened] = Timeliness.parse(v)
   end
 
-  def TIT_REVIEW=(v)
-    self[:TIT_REVIEW] = Timeliness.parse(v)
+  def tit_review=(v)
+    self[:tit_review] = Timeliness.parse(v)
   end
 
-  def COMMIT_OUT=(v)
-    self[:COMMIT_OUT] = Timeliness.parse(v)
+  def commit_out=(v)
+    self[:commit_out] = Timeliness.parse(v)
   end
 
-  def COMMIT_BCK=(v)
-    self[:COMMIT_BCK] = Timeliness.parse(v)
+  def commit_bck=(v)
+    self[:commit_bck] = Timeliness.parse(v)
   end
 
-  def COMMIT_ISS=(v)
-    self[:COMMIT_ISS] = Timeliness.parse(v)
+  def commit_iss=(v)
+    self[:commit_iss] = Timeliness.parse(v)
   end
 
-  def CLOSE_DATE=(v)
-    self[:CLOSE_DATE] = Timeliness.parse(v)
+  def close_date=(v)
+    self[:close_date] = Timeliness.parse(v)
   end
 
-  def MARKUP_RCD=(v)
-    self[:MARKUP_RCD] = Timeliness.parse(v)
+  def markup_rcd=(v)
+    self[:markup_rcd] = Timeliness.parse(v)
   end
 
-  def REC_PAY=(v)
-    self[:REC_PAY] = Timeliness.parse(v)
+  def rec_pay=(v)
+    self[:rec_pay] = Timeliness.parse(v)
   end
 
-  def REC_DOC_RD=(v)
-    self[:REC_DOC_RD] = Timeliness.parse(v)
+  def rec_doc_rd=(v)
+    self[:rec_doc_rd] = Timeliness.parse(v)
   end
 
-  def REDATE_ABS=(v)
-    self[:REDATE_ABS] = Timeliness.parse(v)
+  def redate_abs=(v)
+    self[:redate_abs] = Timeliness.parse(v)
   end
 
-  def POLICY_OUT=(v)
-    self[:POLICY_OUT] = Timeliness.parse(v)
+  def policy_out=(v)
+    self[:policy_out] = Timeliness.parse(v)
   end
 
-  def POLICY_BCK=(v)
-    self[:POLICY_BCK] = Timeliness.parse(v)
+  def policy_bck=(v)
+    self[:policy_bck] = Timeliness.parse(v)
   end
 
-  def POLICY_ISS=(v)
-    self[:POLICY_ISS] = Timeliness.parse(v)
+  def policy_iss=(v)
+    self[:policy_iss] = Timeliness.parse(v)
   end
 
-  def FILE_CLOSE=(v)
-    self[:FILE_CLOSE] = Timeliness.parse(v)
+  def file_close=(v)
+    self[:file_close] = Timeliness.parse(v)
   end
 
   def as_json(options = {})
     {
       :id => self.id,
-      :file_no => self.FILE_NO,
-      :last_name => self.LAST_NAME,
-      :first_name => self.FIRST_NAME,
-      :file_opened => self.FILEOPENED,
-      :town => self.TOWN
+      :file_no => self.file_no,
+      :last_name => self.last_name,
+      :first_name => self.first_name,
+      :file_opened => self.fileopened,
+      :town => self.town
     }
   end
 
   scope :file_not_closed, -> {
-    where("FILE_CLOSE IS NULL OR FILE_CLOSE = \"\"")
+    where("file_close IS NULL OR file_close = ''")
   }
 
   def get_open_summary
     {
-      "BANK" => self.BANK,
-      "FILE_NO" => self.FILE_NO,
-      "LAST_NAME" => self.LAST_NAME,
-      "COUNTY" => self.COUNTY,
-      "CLOSE_DATE" => self.CLOSE_DATE,
-      "PAYMNT_RCD" => self.REC_PAY_FN,
-      "POLICY_ISS" => self.POLICY_ISS,
-      "OR_RECD_BY" => self.OR_RECD_BY
+      "bank" => self.bank,
+      "file_no" => self.file_no,
+      "last_name" => self.last_name,
+      "county" => self.county,
+      "close_date" => self.close_date,
+      "paymnt_rcd" => self.rec_pay_fn,
+      "policy_iss" => self.policy_iss,
+      "or_recd_by" => self.or_recd_by
     }
   end
 end

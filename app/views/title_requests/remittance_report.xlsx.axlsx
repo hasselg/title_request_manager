@@ -95,30 +95,30 @@ count_owners = 0
   mtg_row = [nil] * 16
 
   # Setup mtg row
-  mtg_row[0] = req.FILE_NO
-  mtg_row[1] = req.MTG_POLICY ||= req.SIMULT_MTG ||= req.CONV_POLIC
-  mtg_row[2] = req.COUNTY
-  mtg_row[3] = req.CLOSE_DATE
-  mtg_row[4] = req.MTG_AMOUNT ||= 0
-  mtg_row[5] = req.M_POL_CODE
-  mtg_row[6] = req.STAND_CODE
-  mtg_row[7] = req.RISK_CODE
-  mtg_row[8] = req.PRIOR_AMNT ||= 0
-  mtg_row[9] = req.B_PREM_MTG ||= 0
-  mtg_row[10] = req.STAND_AMNT ||= 0
-  mtg_row[11] = req.RISK_AMNT ||= 0
-  mtg_row[12] = req.TOTAL_M_PREM ||= 0
+  mtg_row[0] = req.file_no
+  mtg_row[1] = req.mtg_policy ||= req.simult_mtg ||= req.conv_polic
+  mtg_row[2] = req.county
+  mtg_row[3] = req.close_date
+  mtg_row[4] = req.mtg_amount ||= 0
+  mtg_row[5] = req.m_pol_code
+  mtg_row[6] = req.stand_code
+  mtg_row[7] = req.risk_code
+  mtg_row[8] = req.prior_amnt ||= 0
+  mtg_row[9] = req.b_prem_mtg ||= 0
+  mtg_row[10] = req.stand_amnt ||= 0
+  mtg_row[11] = req.risk_amnt ||= 0
+  mtg_row[12] = req.total_m_prem ||= 0
   mtg_row[14] = 0
 
   # Setup owner's row
-  owners_row[0] = req.FILE_NO
-  owners_row[1] = req.FEE_POLICY
-  owners_row[2] = req.PROP_CODE
-  owners_row[4] = req.FEE_AMOUNT ||= 0
-  owners_row[5] = req.O_POL_CODE
-  owners_row[9] = req.B_PREM_FEE ||= 0
-  owners_row[12] = req.TOTAL_O_PREM ||= 0
-  owners_row[14] = req.REMIT_AMNT ||= 0
+  owners_row[0] = req.file_no
+  owners_row[1] = req.fee_policy
+  owners_row[2] = req.prop_code
+  owners_row[4] = req.fee_amount ||= 0
+  owners_row[5] = req.o_pol_code
+  owners_row[9] = req.b_prem_fee ||= 0
+  owners_row[12] = req.total_o_prem ||= 0
+  owners_row[14] = req.remit_amnt ||= 0
 
   mtg_row_styles = [wrapped] * 16
   mtg_row_styles[2] = code_top

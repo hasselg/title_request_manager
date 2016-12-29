@@ -16,14 +16,14 @@ wb.styles do |s|
       "OR_RECD_BY"], :style => header_row_border
 
     @titlerequests.each do |req|
-      main_contents = [req[:BANK], req[:FILE_NO], req[:LAST_NAME], req[:COUNTY],
-        req[:CLOSE_DATE].to_s, req[:PAYMNT_RCD].to_s, req[:POLICY_ISS].to_s, req[:OR_RECD_BY]]
+      main_contents = [req[:bank], req[:file_no], req[:last_name], req[:county],
+        req[:close_date].to_s, req[:paymnt_rcd].to_s, req[:policy_iss].to_s, req[:or_recd_by]]
 
-      if req[:MEMO].blank?
+      if req[:memo].blank?
         sheet.add_row main_contents, :style => bottom_row_border
       else
         memo_line = [""] * 8
-        memo_line[0] = req[:MEMO]
+        memo_line[0] = req[:memo]
 
         sheet.add_row main_contents
         sheet.add_row memo_line, :style => [word_wrapped_bottom_row_border, bottom_row_border,

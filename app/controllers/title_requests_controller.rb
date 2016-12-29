@@ -1,6 +1,6 @@
 class TitleRequestsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
     respond_to do |format|
       format.html
@@ -57,7 +57,7 @@ class TitleRequestsController < ApplicationController
       @beginning_date = Timeliness.parse(params[:beginning_date])
       @ending_date = Timeliness.parse(params[:ending_date])
 
-      @titlerequests = TitleRequest.where("FILEOPENED >= ? AND FILEOPENED <= ?", @beginning_date, @ending_date)
+      @titlerequests = TitleRequest.where("fileopened >= ? AND fileopened <= ?", @beginning_date, @ending_date)
       render :xlsx => "open", :filename => "open_title_requests.xlsx"
 
     else
@@ -86,14 +86,14 @@ class TitleRequestsController < ApplicationController
     @agency = Settings.agency.name
     @agency_number = Settings.agency.number
 
-    @titlerequests = TitleRequest.where("REC_PAY >= ? AND REC_PAY <= ? AND LT_TT_W_FN = ?",
-      @beginning_date, @ending_date, @underwriter).order(:CLOSE_DATE)
+    @titlerequests = TitleRequest.where("rec_pay >= ? AND rec_pay <= ? AND lt_tt_w_fn = ?",
+      @beginning_date, @ending_date, @underwriter).order(:close_date)
 
-    @sum_base_premiums = @titlerequests.sum(:B_PREM_MTG) + @titlerequests.sum(:B_PREM_FEE)
-    @sum_stand_end_premiums = @titlerequests.sum(:STAND_AMNT)
-    @sum_risk_end_premiums = @titlerequests.sum(:RISK_AMNT)
-    @sum_total_premiums = @titlerequests.sum(:TOTAL_M_PREM) + @titlerequests.sum(:TOTAL_O_PREM)
-    @sum_remittance = @titlerequests.sum(:REMIT_AMNT)
+    @sum_base_premiums = @titlerequests.sum(:b_prem_mtg) + @titlerequests.sum(:b_prem_fee)
+    @sum_stand_end_premiums = @titlerequests.sum(:stand_amnt)
+    @sum_risk_end_premiums = @titlerequests.sum(:risk_amnt)
+    @sum_total_premiums = @titlerequests.sum(:total_m_prem) + @titlerequests.sum(:total_o_prem)
+    @sum_remittance = @titlerequests.sum(:remit_amnt)
 
     render xlsx: 'remittance_report', filename: "remitted_requests.xlsx",
       xlsx_use_shared_strings: true

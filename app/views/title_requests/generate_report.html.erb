@@ -32,7 +32,7 @@
         <%= form_tag(reporting_remittance_path(format: :xlsx), id: "remittance", class: 'form-inline') do %>
           <div class="form-group">
             <%= label_tag 'Underwriter' %>
-            <%= select_tag :underwriter, options_from_collection_for_select(TitleRequest.select(:LT_TT_W_FN).distinct(), :LT_TT_W_FN, :LT_TT_W_FN) %>
+            <%= select_tag :underwriter, options_from_collection_for_select(TitleRequest.select(:lt_tt_w_fn).distinct(), :lt_tt_w_fn, :lt_tt_w_fn) %>
 
             <%= label_tag 'Beginning Date' %>
             <%= date_field_tag :beginning_date, nil, id: "beginning_remit", class: 'datepicker' %>

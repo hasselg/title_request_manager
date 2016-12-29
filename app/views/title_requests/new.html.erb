@@ -4,15 +4,15 @@
 
   <%= form_for @titlerequest, builder: TidyFormBuilder do |f| %>
     <div class="form-group">
-      <%= f.label :LAST_NAME %>
-      <%= f.text_field :LAST_NAME %>
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
     </div>
 
     <div class="form-group">
-      <%= f.label :FIRST_NAME %>
-      <%= f.text_field :FIRST_NAME %>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
     </div>
-  
+
     <%= f.submit "Create Title Request", class: "btn btn-primary" %>
   <% end %>
 </div>
