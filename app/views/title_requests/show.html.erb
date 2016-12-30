@@ -2,7 +2,7 @@
 <div class="container">
 
   <div class="page-header">
-    <h1>Request for <%= @titlerequest.LAST_NAME %>, <%= @titlerequest.FIRST_NAME %><small> -- <%= link_to "Edit", edit_title_request_url %></small></h1>
+    <h1>Request for <%= @titlerequest.last_name %>, <%= @titlerequest.first_name %><small> -- <%= link_to "Edit", edit_title_request_url %></small></h1>
   </div>
   <%= form_for @titlerequest, :html => {class: 'form-horizontal'}, builder: TidyFormBuilder do |f| %>
     <fieldset disabled="disabled">
