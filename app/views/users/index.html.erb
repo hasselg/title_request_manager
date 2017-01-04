@@ -9,6 +9,7 @@
   <table class="table">
     <tr>
       <th>Username/Email</th>
+      <th>Last logged in at</th>
       <th>Failed Login Attempts</th>
       <th>Locked?</th>
       <th>Admin?</th>
@@ -19,6 +20,7 @@
     <% @users.each do |u| %>
       <tr>
         <td><%= u.email %></td>
+        <td><%= u.last_sign_in_at %></td>
         <td><%= u.failed_attempts %></td>
         <td>
           Status:
