@@ -53,7 +53,7 @@ class UsersController < ApplicationController
       flash[:success] = "User #{@user.email} updated successfully"
       redirect_to action: "index"
     else
-      flash[:danger] = "User #{@user.email} not updated because of the follow error(s): #{@user.errors.full_messages}"
+      flash[:danger] = "User #{@user.email} not updated because of the following error(s): #{@user.errors.full_messages}"
       render 'edit'
     end
   end
