@@ -18,6 +18,9 @@ class TitleRequest < ApplicationRecord
   validates_date :file_close, :on_or_before => :today,
     :after => :fileopened, :allow_blank => true
 
+  has_one :underwriting
+  has_one :underwriter, :through => :underwritings
+
   def order_recd=(v)
     self[:order_recd] = Timeliness.parse(v)
   end

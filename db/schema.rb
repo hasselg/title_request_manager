@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161229144234) do
+ActiveRecord::Schema.define(version: 20170106033337) do
 
   create_table "title_requests", force: :cascade do |t|
     t.text     "last_name"
@@ -63,6 +63,23 @@ ActiveRecord::Schema.define(version: 20161229144234) do
     t.decimal  "total_o_prem"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "underwriters", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "underwriter_id"
+    t.index ["underwriter_id"], name: "index_underwriters_on_underwriter_id"
+  end
+
+  create_table "underwritings", force: :cascade do |t|
+    t.integer  "underwriter_id"
+    t.integer  "title_request_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["title_request_id"], name: "index_underwritings_on_title_request_id"
+    t.index ["underwriter_id"], name: "index_underwritings_on_underwriter_id"
   end
 
   create_table "users", force: :cascade do |t|
