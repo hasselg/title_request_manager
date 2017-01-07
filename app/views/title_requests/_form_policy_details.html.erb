@@ -1,5 +1,17 @@
 <div class="panel panel-default">
   <div class="panel-heading">
+    <h3 class="panel-title">Underwriter</h3>
+  </div>
+  <div class="panel-body">
+    <%= f.select :lt_tt_w_fn, TitleRequest.select(:lt_tt_w_fn).distinct {|r| [r.lt_tt_w_fn, r.lt_tt_w_fn] }, { include_blank: true } %>
+
+  </div>
+</div>
+
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
     <h3 class="panel-title">Policies</h3>
   </div>
   <div class="panel-body">
