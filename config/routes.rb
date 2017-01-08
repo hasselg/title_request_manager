@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users
+  resources :underwriters
 
   resources :title_requests
   match '/reporting/open', to: 'title_requests#generate_open_report', via: [:get, :post]

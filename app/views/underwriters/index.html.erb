@@ -1,0 +1,40 @@
+<div class="container">
+  <h1>Underwriters</h1>
+
+  <%= link_to new_underwriter_path do %>
+    <button type="button" class="btn btn-primary">
+      <span class="fa fa-plus" aria-hidden="true" /></span> Underwriter</button>
+  <% end %>
+
+  <table class="table">
+    <tr>
+      <th>Underwriter</th>
+      <th>Abbreviation</th>
+      <th># Associated Policies</th>
+      <th>Created on</th>
+      <th>Updated on</td>
+      <th>Edit</th>
+      <th>Remove</th>
+    </tr>
+
+    <% @underwriters.each do |u| %>
+      <tr>
+        <td><%= u.name %></td>
+        <td><%= u.abbreviation %></td>
+        <td><%= get_num_associated_underwritings(u) %></td>
+        <td><%= u.created_at %></td>
+        <td><%= u.updated_at %></td>
+        <td>
+          <%= link_to edit_underwriter_path(u) do%>
+            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to underwriter_path(u), method: :delete, data: {confirm: "Are you sure?"}  do%>
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

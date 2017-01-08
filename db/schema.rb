@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170106033337) do
+ActiveRecord::Schema.define(version: 20170107233025) do
 
   create_table "title_requests", force: :cascade do |t|
     t.text     "last_name"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20170106033337) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "underwriter_id"
+    t.string   "abbreviation"
     t.index ["underwriter_id"], name: "index_underwriters_on_underwriter_id"
   end
 

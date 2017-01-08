@@ -18,8 +18,13 @@ class TitleRequest < ApplicationRecord
   validates_date :file_close, :on_or_before => :today,
     :after => :fileopened, :allow_blank => true
 
-  has_one :underwriting
-  has_one :underwriter, :through => :underwritings
+  has_one :underwriting, -> { includes :underwriter }, autosave: true
+  has_one :underwriter, through: :underwriting
+  accepts_nested_attributes_for :underwriting
+
+  before_create do
+    self.underwriting = Underwriting.new
+  end
 
   def order_recd=(v)
     self[:order_recd] = Timeliness.parse(v)

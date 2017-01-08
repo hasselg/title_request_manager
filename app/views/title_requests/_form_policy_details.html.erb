@@ -3,8 +3,9 @@
     <h3 class="panel-title">Underwriter</h3>
   </div>
   <div class="panel-body">
-    <%= f.select :lt_tt_w_fn, TitleRequest.select(:lt_tt_w_fn).distinct {|r| [r.lt_tt_w_fn, r.lt_tt_w_fn] }, { include_blank: true } %>
-
+    <%= f.fields_for :underwriting do |w| %>
+      <%= w.select :underwriter_id, Underwriter.all.collect { |u| [ u.name, u.id ] } %>
+    <% end %>
   </div>
 </div>
 

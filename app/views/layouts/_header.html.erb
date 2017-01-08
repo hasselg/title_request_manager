@@ -12,6 +12,10 @@
           <li><%= link_to "New Request", new_title_request_path %></li>
           <li><%= link_to "New Report", reporting_path %></li>
 
+          <% if can? :manage, Underwriter %>
+            <li><%= link_to "Manage Underwriters", underwriters_path %></li>
+          <% end %>
+
           <% if can? :manage, User %>
             <li><%= link_to "Manage Users", users_path %></li>
           <% end %>
