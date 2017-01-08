@@ -25,8 +25,6 @@ class TitleRequestsController < ApplicationController
     @titlerequest = TitleRequest.new(title_request_params)
 
     if @titlerequest.save
-      logger.debug("new guy created!")
-
       redirect_to edit_title_request_url(@titlerequest)
     else
       render 'new'
