@@ -2,8 +2,7 @@ class TitleRequest < ApplicationRecord
   validates_presence_of :last_name
   validates_date :order_recd, :on_or_before => :today, :allow_blank => true
   validates_date :fileopened, :on_or_before => :today, :allow_blank => true
-  validates_date :tit_review, :on_or_before => :today, :on_or_after => :fileopened,
-    :allow_blank => true
+  validates_date :tit_review, :on_or_before => :today, :allow_blank => true
   validates_date :commit_out, :on_or_before => :today, :allow_blank => true
   validates_date :commit_bck, :on_or_before => :today, :allow_blank => true
   validates_date :commit_iss, :on_or_before => :today, :allow_blank => true
@@ -15,10 +14,9 @@ class TitleRequest < ApplicationRecord
   validates_date :policy_out, :on_or_before => :today, :allow_blank => true
   validates_date :policy_bck, :on_or_before => :today, :allow_blank => true
   validates_date :policy_iss, :on_or_before => :today, :allow_blank => true
-  validates_date :file_close, :on_or_before => :today,
-    :after => :fileopened, :allow_blank => true
+  validates_date :file_close, :on_or_before => :today, :on_or_after => :fileopened, :allow_blank => true
 
-  has_one :underwriting, -> { includes :underwriter }, autosave: true
+  has_one :underwriting, autosave: true
   has_one :underwriter, through: :underwriting
   accepts_nested_attributes_for :underwriting
 

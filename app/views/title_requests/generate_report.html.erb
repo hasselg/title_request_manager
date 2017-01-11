@@ -29,10 +29,10 @@
     <div class="panel panel-default">
       <div class="panel-heading">Remittance Report</div>
       <div class="panel-body">
-        <%= form_tag(reporting_remittance_path(format: :xlsx), id: "remittance", class: 'form-inline') do %>
+        <%= form_tag reporting_remittance_path(format: :xlsx), id: "remittance", class: 'form-inline' do %>
           <div class="form-group">
             <%= label_tag 'Underwriter' %>
-            <%= select_tag :underwriter, options_from_collection_for_select(TitleRequest.select(:lt_tt_w_fn).distinct(), :lt_tt_w_fn, :lt_tt_w_fn) %>
+            <%= select_tag :underwriter_id, options_for_select(Underwriter.all.collect { |u| [ u.name, u.id ] }) %>
 
             <%= label_tag 'Beginning Date' %>
             <%= date_field_tag :beginning_date, nil, id: "beginning_remit", class: 'datepicker' %>

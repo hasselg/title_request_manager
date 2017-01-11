@@ -67,25 +67,19 @@ class TitleRequestsController < ApplicationController
   def generate_remittance_report
     @beginning_date = Timeliness.parse(params[:beginning_date])
     @ending_date = Timeliness.parse(params[:ending_date])
-    @underwriter = params[:underwriter]
-
-    case @underwriter
-      when "LT"
-        @underwriter_name = "Lawyer's Title Insurance Company"
-      when "TT"
-        @underwriter_name = "TICOR Title Insurance Company"
-      when "W"
-        @underwriter_name = "Westcor Title Insurance Company"
-      when "FN"
-        @underwriter_name = "Fidelity National Title Insurance Company"
-    end
+    @underwriter = Underwriter.find(params[:underwriter_id])
+    @underwriter_name = @underwriter.name
 
     @official = Settings.agency.certifying_official.upcase
     @agency = Settings.agency.name
     @agency_number = Settings.agency.number
 
-    @titlerequests = TitleRequest.where("rec_pay >= ? AND rec_pay <= ? AND lt_tt_w_fn = ?",
-      @beginning_date, @ending_date, @underwriter).order(:close_date)
+    @titlerequests =
+      TitleRequest
+        .where("rec_pay >= ? AND rec_pay <= ?",@beginning_date, @ending_date)
+        .joins(:underwriting)
+        .where("underwritings.underwriter_id=?", @underwriter.id)
+        .order(:close_date)
 
     @sum_base_premiums = @titlerequests.sum(:b_prem_mtg) + @titlerequests.sum(:b_prem_fee)
     @sum_stand_end_premiums = @titlerequests.sum(:stand_amnt)
