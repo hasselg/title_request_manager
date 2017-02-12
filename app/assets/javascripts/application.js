@@ -15,3 +15,4 @@
 //= require jquery-ui
 //= require datatables
 //= require modernizr-custom
+//= require resize_fix
